@@ -1,0 +1,2 @@
+# BattlePets
+Spigot BattlePets plugin.

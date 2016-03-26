@@ -1,0 +1,349 @@
+Size: 9
+Name: '&4Pet Shop!'
+Revive:
+  Material: ENCHANTED_BOOK
+  Data: 0
+  DisplayName: '&6Revive'
+  Lore:
+  - '&4Revives your pet'
+  - '&4with full HP.'
+  - '&eCosts: 100 gold'
+  Price: 25
+Items:
+  '0':
+    Material: APPLE
+    Data: 0
+    DisplayName: '&4Heal menu'
+    Lore:
+    - '&4Go to Heal'
+    - '&4menu'
+    Index: 0
+    Action: Openmenu:Heal
+    Price: 0
+    Perm: battlepets.shop
+    Level: 0
+  '1':
+    Material: DIAMOND
+    Data: 0
+    DisplayName: '&8Mighty zombie egg'
+    Lore:
+    - '&1Buy Mighty zombie egg!'
+    - '&eCosts: 200 gold'
+    Index: 1
+    Action: 'Egg:MightyZombie:ZOMBIE'
+    Price: 200
+    Perm: battlepets.shop
+    Level: 0
+  '2':
+    Material: EXP_BOTTLE
+    Data: 0
+    DisplayName: '&4XP menu'
+    Lore:
+    - '&4Go to XP'
+    - '&4menu'
+    Index: 2
+    Action: Openmenu:XP
+    Price: 0
+    Perm: battlepets.shop
+    Level: 0
+  '3':
+    Material: ENCHANTMENT_TABLE
+    Data: 0
+    DisplayName: '&6Skillpoints menu'
+    Lore:
+    - '&4Go to skillpoints'
+    - '&4menu'
+    Index: 3
+    Action: Openmenu:Skillpoints
+    Price: 0
+    Perm: battlepets.shop
+    Level: 0
+  '7':
+    Material: GOLD_INGOT
+    Data: 0
+    DisplayName: '&4VIP menu'
+    Lore:
+    - '&4Go to VIP menu!'
+    Index: 7
+    Action: Openmenu:VIP
+    Price: 0
+    Perm: battlepets.vip
+    Level: 0
+  '8':
+    Material: ENDER_PEARL
+    Data: 0
+    DisplayName: '&8Return'
+    Lore:
+    - '&9Return to main menu!'
+    Index: 8
+    Action: Openmenu:return
+    Price: 0
+    Perm: battlepets.shop
+    Level: 0
+SecondaryMenus:
+  Heal:
+    Size: 9
+    DisplayName: '&4Heal menu!'
+    Items:
+      '0':
+        Material: COOKIE
+        Data: 0
+        DisplayName: '&4Heal 5'
+        Lore:
+        - '&4Heals your pet'
+        - '&4with 5 HP.'
+        - '&eCosts: 25 gold'
+        Index: 0
+        Action: Heal:5
+        Price: 25
+        Perm: battlepets.shop
+        Level: 0
+      '1':
+        Material: APPLE
+        Data: 0
+        DisplayName: '&4Heal 10'
+        Lore:
+        - '&4Heals your pet'
+        - '&4with 10 HP.'
+        - '&eCosts: 40 gold'
+        Index: 1
+        Action: Heal:10
+        Price: 40
+        Perm: battlepets.shop
+        Level: 0
+      '2':
+        Material: COOKED_BEEF
+        Data: 0
+        DisplayName: '&4Heal 20'
+        Lore:
+        - '&4Heals your pet'
+        - '&4with 20 HP.'
+        - '&eCosts: 60 gold'
+        Index: 2
+        Action: Heal:20
+        Price: 60
+        Perm: battlepets.shop
+        Level: 0
+      '3':
+        Material: CAKE
+        Data: 0
+        DisplayName: '&4Heal 40'
+        Lore:
+        - '&4Heals your pet'
+        - '&4with 40 HP.'
+        - '&eCosts: 100 gold'
+        Index: 3
+        Action: Heal:40
+        Price: 100
+        Perm: battlepets.shop
+        Level: 0
+      '8':
+        Material: ENDER_PEARL
+        Data: 0
+        DisplayName: '&8Return'
+        Lore:
+        - '&9Return to main menu!'
+        Index: 8
+        Action: Openmenu:main_menu
+        Price: 0
+        Perm: battlepets.shop
+        Level: 0
+  Skillpoints:
+    Size: 9
+    DisplayName: '&6Skillpoints menu!'
+    Items:
+      '0':
+        Material: COOKIE
+        Data: 0
+        DisplayName: '&61 Skillpoint'
+        Lore:
+        - '&4gives your pet'
+        - '&41 skillpoint.'
+        - '&eCosts: 50 gold'
+        Index: 0
+        Action: Skillpoints:1
+        Price: 50
+        Perm: battlepets.shop
+        Level: 0
+      '1':
+        Material: APPLE
+        Data: 0
+        DisplayName: '&63 Skillpoints'
+        Lore:
+        - '&4gives your pet'
+        - '&43 skillpoints.'
+        - '&eCosts: 120 gold'
+        Index: 1
+        Action: Skillpoints:3
+        Price: 120
+        Perm: battlepets.shop
+        Level: 0
+      '2':
+        Material: COOKED_BEEF
+        Data: 0
+        DisplayName: '&66 Skillpoints'
+        Lore:
+        - '&4gives your pet'
+        - '&46 skillpoints.'
+        - '&eCosts: 200 gold'
+        Index: 2
+        Action: Skillpoints:6
+        Price: 200
+        Perm: battlepets.shop
+        Level: 0
+      '8':
+        Material: ENDER_PEARL
+        Data: 0
+        DisplayName: '&8Return'
+        Lore:
+        - '&9Return to main menu!'
+        Index: 8
+        Action: Openmenu:main_menu
+        Price: 0
+        Perm: battlepets.shop
+        Level: 0
+  XP:
+    Size: 9
+    DisplayName: '&6XP menu!'
+    Items:
+      '0':
+        Material: COOKIE
+        Data: 0
+        DisplayName: '&4Get 10 XP'
+        Lore:
+        - '&4gives your pet'
+        - '&410 XP.'
+        - '&eCosts: 25 gold'
+        Index: 0
+        Action: XP:10
+        Price: 25
+        Perm: battlepets.shop
+        Level: 0
+      '1':
+        Material: APPLE
+        Data: 0
+        DisplayName: '&4Get 25 XP'
+        Lore:
+        - '&4gives your pet'
+        - '&425 XP.'
+        - '&eCosts: 40 gold'
+        Index: 1
+        Action: XP:25
+        Price: 40
+        Perm: battlepets.shop
+        Level: 0
+      '2':
+        Material: COOKED_BEEF
+        Data: 0
+        DisplayName: '&4Get 50 XP'
+        Lore:
+        - '&4gives your pet'
+        - '&450 XP.'
+        - '&eCosts: 90 gold'
+        Index: 2
+        Action: XP:50
+        Price: 90
+        Perm: battlepets.shop
+        Level: 0
+      '8':
+        Material: ENDER_PEARL
+        Data: 0
+        DisplayName: '&8Return'
+        Lore:
+        - '&9Return to main menu!'
+        Index: 8
+        Action: Openmenu:main_menu
+        Price: 0
+        Perm: battlepets.shop
+        Level: 0
+  VIP:
+    Size: 9
+    DisplayName: '&6VIP menu!'
+    Items:
+      '0':
+        Material: APPLE
+        Data: 0
+        DisplayName: '&4Heal 10'
+        Lore:
+        - '&4Heals your pet'
+        - '&4with 10 HP.'
+        - '&eCosts: 10 gold'
+        Index: 0
+        Action: Heal:10
+        Price: 10
+        Perm: battlepets.shop
+        Level: 0
+      '1':
+        Material: EXP_BOTTLE
+        Data: 0
+        DisplayName: '&4XP'
+        Lore:
+        - '&4Gives your pet'
+        - '&420 XP.'
+        - '&eCosts: 20 gold'
+        Index: 1
+        Action: XP:20
+        Price: 20
+        Perm: battlepets.shop
+        Level: 0
+      '2':
+        Material: ENCHANTMENT_TABLE
+        Data: 0
+        DisplayName: '&6Skillpoints'
+        Lore:
+        - '&4Gives your pet'
+        - '&45 skillpoints!'
+        - '&eCosts: 125 gold'
+        Index: 2
+        Action: Skillpoints:5
+        Price: 125
+        Perm: battlepets.shop
+        Level: 0
+      '8':
+        Material: ENDER_PEARL
+        Data: 0
+        DisplayName: '&8Return'
+        Lore:
+        - '&9Return to main menu!'
+        Index: 8
+        Action: Openmenu:return
+        Price: 0
+        Perm: battlepets.shop
+        Level: 0
+  cmd:
+    Size: 9
+    DisplayName: '&6Egg menu!'
+    Items:
+      '0':
+        Material: MONSTER_EGG
+        Data: 0
+        DisplayName: '&4Zombie pet'
+        Lore:
+        - '&4Buy zombie pet!'
+        - '&eCosts: 100 gold'
+        Index: 0
+        Action: 'Egg:Zombie pet:ZOMBIE'
+        Price: 100
+        Perm: battlepets.shop
+      '1':
+        Material: MONSTER_EGG
+        Data: 0
+        DisplayName: '&4Baby Zombie pet'
+        Lore:
+        - '&4Buy baby zombie pet!'
+        - '&eCosts: 125 gold'
+        Index: 1
+        Action: 'Egg:Zombie pet:BABY-ZOMBIE'
+        Price: 125
+        Perm: battlepets.shop
+      '2':
+        Material: MONSTER_EGG
+        Data: 0
+        DisplayName: '&4Skeleton horse pet'
+        Lore:
+        - '&4Buy Skeleton horse pet!'
+        - '&eCosts: 1000 gold'
+        Index: 2
+        Action: 'Egg:&7Skeleton horse:BLACK-NONE-SKELETON_HORSE-HORSE'
+        Price: 1000
+        Perm: battlepets.shop

@@ -1,0 +1,58 @@
+robot:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+  Offset:
+    X: 0
+    Y: 0
+    Z: 0
+  Texture: MONSTER_EGGS:1
+clown:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+  Offset:
+    X: 0
+    Y: 0
+    Z: 0
+  Texture: MONSTER_EGGS:2

@@ -1,0 +1,888 @@
+baby-villager:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+baby-wither:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+wither:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+bat:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+block:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+magma_cube:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+cave_spider:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+chicken:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+baby-chicken:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+cow:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+baby-cow:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+creeper:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+horse:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+baby-horse:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+iron_golem:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+mushroom_cow:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+baby-mushroom_cow:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+ocelot:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+pig:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+baby-pig:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+pig_zombie:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+rabbit:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+baby-rabbit:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+sheep:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+baby-sheep:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+silverfish:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+skeleton:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+snowman:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+spider:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+villager:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+baby-villager:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+witch:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+wolf:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+baby-wolf:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+zombie:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+baby-zombie:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 20
+  MaxLevel: 20
+  XPForLevel: 130
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 2
+    Damage: 0.5
+    Defense: 0.5
+    Speed: 0.05
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40
+slime:
+  HPLessThan: 5
+  Ridable: false
+  RequiredLevel: 0
+  Chances: 40
+  MaxLevel: 30
+  XPForLevel: 150
+  SkillpointsForLevel: 5
+  HPPerSecPercent: 0.01
+  BaseStats:
+    HP: 20
+    Damage: 3
+    Defense: 0.5
+    Speed: 1
+  AddPerStat:
+    HP: 1
+    Damage: 0.25
+    Defense: 0.25
+    Speed: 0.02
+  MaxPoints:
+    Vitality: 40
+    Defense: 40
+    Strength: 40
+    Dexterity: 40

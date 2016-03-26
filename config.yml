@@ -1,0 +1,61 @@
+AllowedPets:
+- baby-villager
+- magma_cube
+- slime
+- baby-wither
+- wither
+- bat
+- block
+- cave_spider
+- chicken
+- baby-chicken
+- cow
+- baby-cow
+- creeper
+- horse
+- baby-horse
+- iron_golem
+- mushroom_cow
+- baby-mushroom_cow
+- ocelot
+- pig
+- baby-pig
+- pig_zombie
+- rabbit
+- baby-rabbit
+- sheep
+- baby-sheep
+- silverfish
+- skeleton
+- snowman
+- spider
+- villager
+- baby-villager
+- witch
+- wolf
+- baby-wolf
+- zombie
+- baby-zombie
+CommandAliases:
+- bp
+- pets
+AllWorldsAllowed: true
+AllowedWorlds:
+- world_nether
+PVPEnabled: true
+MaxRadius: 15
+RadiusFromWhereToFollow: 5
+PetNameSize: 15
+AllowPetsInTowny: true
+WorldGuard:
+  Enabled: false
+  EnableSpawningByDefault: true
+  ExceptionRegions:
+  - spawn
+MySQL:
+  Enabled: true
+  IP: localhost
+  Port: 3306
+  Username: root
+  Password: ''
+  Database: pluginas

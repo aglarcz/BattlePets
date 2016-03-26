@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="C:/Users/TOJAN-VIRUS/Desktop/Spigot/plugins1/Vault.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_71/lib/charsets.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_71/lib/deploy.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_71/lib/javaws.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_71/lib/jce.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TOJAN-VIRUS/Desktop/Spigot/plugins1/worldguard-6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TOJAN-VIRUS/Desktop/Spigot/plugins/WorldGuard/Towny.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_71/lib/jfr.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_71/lib/jfxswt.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_71/lib/jsse.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_71/lib/management-agent.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_71/lib/plugin.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_71/lib/resources.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_71/lib/rt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TOJAN-VIRUS/Desktop/Spigot/spigot_server.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="https://hub.spigotmc.org/javadocs/spigot/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/TOJAN-VIRUS/Desktop/Spigot/API/spigot_server - Copy.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TOJAN-VIRUS/Desktop/Spigot/API/spigot_server1 - Copy.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TOJAN-VIRUS/Desktop/Spigot/API/spigot_server1.8.8 - Copy.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TOJAN-VIRUS/Desktop/Spigot/API/spigot_server1649 - Copy.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TOJAN-VIRUS/Desktop/Spigot/spigot_server1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TOJAN-VIRUS/Desktop/Spigot/spigot_server2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TOJAN-VIRUS/Desktop/Spigot/spigot_server3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TOJAN-VIRUS/Desktop/Spigot/spigot_server1649.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

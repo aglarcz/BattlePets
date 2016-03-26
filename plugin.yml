@@ -1,0 +1,35 @@
+main: darius0021.BattleMobs
+name: BattlePets
+version: 1.9.1.2
+author: Darius0021
+description: BattlePets
+depend: [Vault]
+softdepend: [WorldGuard, Towny]
+commands:
+  battlepets:
+    description: main BattlePets commands.
+permissions:
+  battlepets.catch.*:
+    description: Gives ability to catch all mobs.
+    default: true
+  battlepets.spawn.*:
+    description: Gives ability to spawn all mobs.
+    default: true
+  battlepets.egg:
+    description: Gives ability get pets eggs by command.
+    default: op
+  battlepets.name:
+    description: Allows to rename pets.
+    default: true
+  battlepets.shop:
+    description: Allows to open shop with command.
+    default: true
+  battlepets.set.*:
+    description: Allows to set pet skillpoints, level, etc.
+    default: op
+  battlepets.reload:
+    description: Allows to reload plugin.
+    default: op
+  battlepets.removenear:
+    description: Allows to remove nearby entities.
+    default: op
