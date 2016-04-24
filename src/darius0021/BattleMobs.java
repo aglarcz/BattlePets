@@ -9,7 +9,6 @@ import darius0021.reflection.v1_8_2.Spawning_v1_8_R2;
 import darius0021.reflection.v1_8_3.Spawning_v1_8_R3;
 import darius0021.reflection.v1_9_1.Spawning_v1_9_R1;
 import darius0021.versions.Spawning;
-import darius0021.versions.v1_7_4.Spawning_v1_7_R4;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -542,9 +541,6 @@ public class BattleMobs extends JavaPlugin implements Listener {
             case "v1_8_R1":
                 spawning = new Spawning_v1_8_R1();
                 break;
-            case "v1_7_R4":
-                spawning = new Spawning_v1_7_R4();
-
             case "v1_9_R1":
                 spawning = new Spawning_v1_9_R1();
         }
