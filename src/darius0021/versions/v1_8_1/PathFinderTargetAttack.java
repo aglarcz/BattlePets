@@ -2,7 +2,7 @@ package darius0021.versions.v1_8_1;
 
 import net.minecraft.server.v1_8_R1.*;
 
-public class PathFinderTargetSelector extends PathfinderGoal {
+public class PathFinderTargetAttack extends PathfinderGoal {
 
     protected EntityInsentient b;
     World a;
@@ -15,7 +15,7 @@ public class PathFinderTargetSelector extends PathfinderGoal {
     private double j;
     private double k;
 
-    public PathFinderTargetSelector(EntityInsentient paramEntityCreature, double paramDouble, boolean paramBoolean) {
+    public PathFinderTargetAttack(EntityInsentient paramEntityCreature, double paramDouble, boolean paramBoolean) {
         this.b = paramEntityCreature;
         this.a = paramEntityCreature.world;
         this.d = paramDouble;

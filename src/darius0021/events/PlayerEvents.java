@@ -197,7 +197,7 @@ public class PlayerEvents implements Listener {
         if (BattlePets.pets.containsKey(event.getPlayer().getUniqueId()) && Database.enabled) {
             LivingEntity pet = BattlePets.pets.get(event.getPlayer().getUniqueId());
             Database.SavePet(pet);
-            BattlePets.spawning.returnas(pet);
+            BattlePets.spawning.returnPet(pet);
             pet.remove();
             BattlePets.pets.remove(event.getPlayer().getUniqueId());
         } else if (BattlePets.pets.containsKey(event.getPlayer().getUniqueId()))
@@ -217,7 +217,7 @@ public class PlayerEvents implements Listener {
             LivingEntity pet = BattlePets.pets.get(event.getPlayer().getUniqueId());
             if (Database.enabled) {
                 Database.SavePet(pet);
-                BattlePets.spawning.returnas(pet);
+                BattlePets.spawning.returnPet(pet);
                 pet.remove();
                 BattlePets.pets.remove(event.getPlayer().getUniqueId());
             } else
@@ -238,7 +238,7 @@ public class PlayerEvents implements Listener {
         if (BattlePets.pets.containsKey(event.getPlayer().getUniqueId()) && Database.enabled) {
             LivingEntity pet = BattlePets.pets.get(event.getPlayer().getUniqueId());
             Database.SavePet(pet);
-            BattlePets.spawning.returnas(pet);
+            BattlePets.spawning.returnPet(pet);
             pet.remove();
             BattlePets.pets.remove(event.getPlayer().getUniqueId());
             Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
@@ -257,7 +257,7 @@ public class PlayerEvents implements Listener {
         if (BattlePets.pets.containsKey(event.getEntity().getUniqueId()) && Database.enabled) {
             LivingEntity pet = BattlePets.pets.get(event.getEntity().getUniqueId());
             Database.SavePet(pet);
-            BattlePets.spawning.returnas(pet);
+            BattlePets.spawning.returnPet(pet);
             pet.remove();
             BattlePets.pets.remove(event.getEntity().getUniqueId());
         } else if (BattlePets.pets.containsKey(event.getEntity().getUniqueId())) {

@@ -191,7 +191,7 @@ public class Shop implements Listener {
         LivingEntity pet = BattlePets.pets.get(p.getUniqueId());
         switch (partjob) {
             case "revive":
-                ItemStack item2 = p.getInventory().getItemInHand();
+                ItemStack item2 = p.getInventory().getItemInMainHand();
                 ItemMeta meta1 = item2.getItemMeta();
                 List<String> lore = meta1.getLore();
                 double hp = Double.valueOf(lore.get(3).substring(lore.get(3).indexOf("/") + 1));
@@ -218,10 +218,35 @@ public class Shop implements Listener {
                 p.sendMessage(Language.getMessage("pet_spbought"));
                 break;
             case "egg":
+                if (jobargs.length > 3)
+                    jobargs[2] += ":" + jobargs[3];
+                String type = jobargs[2].split("-")[jobargs[2].split("-").length - 1].toLowerCase();
+                if (!type.equalsIgnoreCase("block")) {
+                ItemStack ite = BattlePets.createEgg(type, jobargs[2].split("-"));
+                ItemMeta meta = ite.getItemMeta();
+                meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', jobargs[1]));
+                type = "";
+                jobargs[2] = jobargs[2].toUpperCase();
+                if (jobargs[2].contains("BABY")) {
+                    type += "baby-";
+                }
+                jobargs[2].split("-")[jobargs[2].split("-").length - 1].toLowerCase();
+                ite.setItemMeta(meta);
+                p.closeInventory();
+                if (p.getInventory().firstEmpty() == -1) {
+                    if (p.getEnderChest().firstEmpty() != -1)
+                        p.getEnderChest().addItem(ite);
+                    else
+                        p.getWorld().dropItemNaturally(p.getEyeLocation(), ite);
+                } else {
+                    p.getInventory().addItem(ite);
+                }
+                p.sendMessage(Language.getMessage("egg_bought"));
+                } else {
                 ItemStack ite = new ItemStack(Material.MONSTER_EGG, 1);
                 ItemMeta meta = ite.getItemMeta();
                 meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', jobargs[1]));
-                String type = "";
+                type = "";
                 jobargs[2] = jobargs[2].toUpperCase();
                 if (jobargs.length > 3)
                     jobargs[2] += ":" + jobargs[3];
@@ -246,6 +271,7 @@ public class Shop implements Listener {
                     p.getInventory().addItem(ite);
                 }
                 p.sendMessage(Language.getMessage("egg_bought"));
+                }
                 break;
             case "pointsreset":
                 int total = 0;

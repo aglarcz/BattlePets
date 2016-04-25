@@ -14,6 +14,7 @@ import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.PlayerEggThrowEvent;
 import org.bukkit.event.player.PlayerShearEntityEvent;
+import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 
 import java.util.UUID;
@@ -38,7 +39,6 @@ public class EntityEvents implements Listener {
         }
         if (event.isCancelled() && event.getDamager().getType() != EntityType.WITHER_SKULL) return;
         if (!(event.getEntity() instanceof Damageable)) return;
-        if (!plugin.version.contains("1_7"))
             if (event.getEntity() instanceof ArmorStand)
                 if (event.getEntity().hasMetadata("Owner")) {
                     event.setCancelled(true);
@@ -66,7 +66,6 @@ public class EntityEvents implements Listener {
         if (event.isCancelled()) return;
         if (!event.getEntity().hasMetadata("Owner")) return;
         LivingEntity pet = null;
-        if (!plugin.version.contains("1_7"))
             if (event.getEntity() instanceof ArmorStand) {
                 pet = BattlePets.pets.get(UUID.fromString(event.getEntity().getMetadata("Owner").get(0).asString()));
                 event.setCancelled(true);
@@ -171,5 +170,13 @@ public class EntityEvents implements Listener {
             event.setHatching(false);
             event.setNumHatches((byte) 0);
         }
+    }
+    @EventHandler
+    public void onUnload(ChunkUnloadEvent event) {
+    	for (Entity entity : event.getChunk().getEntities()) {
+    		if (entity.hasMetadata("Owner")) {
+    			BattlePets.return_pet(Bukkit.getPlayer(UUID.fromString(entity.getMetadata("Owner").get(0).asString())));
+    		}
+    	}
     }
 }

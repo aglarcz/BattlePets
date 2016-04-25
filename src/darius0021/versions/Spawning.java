@@ -11,9 +11,9 @@ public interface Spawning {
 
     public void setTarget(LivingEntity pet, LivingEntity target);
 
-    public void returnas(LivingEntity pet);
+    public void returnPet(LivingEntity pet);
 
-    public void nameupdate(LivingEntity pet);
+    public void nameUpdate(LivingEntity pet);
 
     public void load();
 }

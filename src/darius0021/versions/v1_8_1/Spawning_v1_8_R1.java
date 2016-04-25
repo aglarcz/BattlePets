@@ -192,7 +192,7 @@ public class Spawning_v1_8_R1 implements Spawning {
         if ((entity instanceof Skeleton && !lore.get(0).contains("WITHER")) || (entity instanceof Wither && !type[0].equalsIgnoreCase("baby")))
             tt.goalSelector.a(4, new PathfinderGoalArrowAttack((IRangedEntity) tt, statsai.Speed + Dexterity * statsai._Speed, 20, 60, 15.0F));
         else
-            tt.goalSelector.a(4, new PathFinderTargetSelector(tt, statsai.Speed + Dexterity * statsai._Speed, true));
+            tt.goalSelector.a(4, new PathFinderTargetAttack(tt, statsai.Speed + Dexterity * statsai._Speed, true));
         tt.goalSelector.a(2, new PathFinderGoalFollow(tt, ((CraftPlayer) event.getPlayer()).getHandle(), plugin.radius1, plugin.radius2, statsai.Speed + Dexterity * statsai._Speed));
         event.getPlayer().getInventory().remove(item);
         return pet;
@@ -229,13 +229,13 @@ public class Spawning_v1_8_R1 implements Spawning {
     }
 
     @Override
-    public void nameupdate(LivingEntity pet) {
+    public void nameUpdate(LivingEntity pet) {
         if (((CraftLivingEntity) pet).getHandle() instanceof ArmorStandPlus)
             ((ArmorStandPlus) ((CraftLivingEntity) pet).getHandle()).updatename();
     }
 
     @Override
-    public void returnas(LivingEntity pet) {
+    public void returnPet(LivingEntity pet) {
         if (((CraftLivingEntity) pet).getHandle() instanceof ArmorStandPlus)
             ((ArmorStandPlus) ((CraftLivingEntity) pet).getHandle()).removeall();
     }

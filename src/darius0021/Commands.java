@@ -225,7 +225,7 @@ public class Commands {
                 type += "baby-";
             }
             type += argumentai[argumentai.length - 1].toLowerCase();
-            if (!BattlePets.statsai.containsKey(type)) {
+            if (!BattlePets.statsai.containsKey(type) && !type.equalsIgnoreCase("random")) {
                 sender.sendMessage(Language.getMessage("type_unavailable"));
                 return true;
             }
@@ -308,6 +308,7 @@ public class Commands {
             if (type.equalsIgnoreCase("endermite"))
                 type = "block";
             MobStats stats = BattlePets.statsai.get(type);
+            if (type.equalsIgnoreCase("block")) {
             ItemStack item = new ItemStack(Material.MONSTER_EGG, 1);
             ItemMeta meta = item.getItemMeta();
             if (args.length > 3) {
@@ -323,6 +324,21 @@ public class Commands {
             item.setItemMeta(meta);
             p.getInventory().addItem(item);
             sender.sendMessage(Language.getMessage("cmd_egg_added"));
+            } else {
+                ItemStack item = BattlePets.createEgg(type, argumentai);
+                ItemMeta meta = item.getItemMeta();
+                if (args.length > 3) {
+                    String name = "";
+                    for (int i = 3; i < args.length - 1; i++) {
+                        name += args[i] + " ";
+                    }
+                    name += args[args.length - 1];
+                    meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+                }
+                item.setItemMeta(meta);
+                p.getInventory().addItem(item);
+                sender.sendMessage(Language.getMessage("cmd_egg_added"));
+            }
         }
         return true;
     }

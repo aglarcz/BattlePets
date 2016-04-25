@@ -16,12 +16,30 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.DyeColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Ageable;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Horse;
+import org.bukkit.entity.Horse.Color;
+import org.bukkit.entity.Horse.Style;
+import org.bukkit.entity.Horse.Variant;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Rabbit;
+import org.bukkit.entity.Rabbit.Type;
+import org.bukkit.entity.Sheep;
+import org.bukkit.entity.Skeleton;
+import org.bukkit.entity.Slime;
+import org.bukkit.entity.Villager;
+import org.bukkit.entity.Villager.Profession;
+import org.bukkit.entity.Zombie;
+import org.bukkit.entity.Skeleton.SkeletonType;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -29,6 +47,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+
 
 import darius0021.events.ArmorStandEvent;
 import darius0021.events.EntityEvents;
@@ -69,7 +88,7 @@ public class BattlePets extends JavaPlugin implements Listener {
             PlayerEvents.battles.remove(p.getUniqueId());
 
         LivingEntity pet = pets.get(p.getUniqueId());
-        spawning.returnas(pet);
+        spawning.returnPet(pet);
         ItemStack ite = new ItemStack(Material.MONSTER_EGG, 1);
         ItemMeta meta = ite.getItemMeta();
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', pet.getMetadata("Name").get(0).asString()));
@@ -113,7 +132,7 @@ public class BattlePets extends JavaPlugin implements Listener {
             pet.setMetadata("Points", new FixedMetadataValue(plugin, points + stats.SkillpointsForLevel));
             Bukkit.getPlayer(UUID.fromString(pet.getMetadata("Owner").get(0).asString())).sendMessage(Language.getMessage("pet_levelup").replace("{level}", "" + level));
             pet.setCustomName(Language.display.replace("{name}", pet.getMetadata("Name").get(0).asString()).replace("{level}", level + ""));
-            spawning.nameupdate(pet);
+            spawning.nameUpdate(pet);
             AddXP(pet, 0);
         } else
             pet.setMetadata("XP", new FixedMetadataValue(plugin, current));
@@ -319,16 +338,193 @@ public class BattlePets extends JavaPlugin implements Listener {
     }
 
     public static ItemStack createEgg(String type, String args[]) {
-        ItemStack item = new ItemStack(Material.MONSTER_EGG, 1);
-        ItemMeta meta = item.getItemMeta();
+    	try {
+    	type=type.toUpperCase();
+    	boolean full=false, baby=false;
         Random rand = new Random();
         if (type.equalsIgnoreCase("random")) {
             type = (String) statsai.keySet().toArray()[rand.nextInt(statsai.size())];
-            args = new String[1];
-            args[0] = "random";
+            type = type.toUpperCase();
+            if (type.contains("BABY")) {
+            	type=type.replace("BABY-", "");
+            }
+            full=true;
+            args = new String[10];
+            for (int i=0; i<10; i++) {
+            	args[i]="";
+            }
         }
-
-        return null;
+        Entity entity = Bukkit.getWorlds().get(0).spawnEntity(
+        		new Location(Bukkit.getWorlds().get(0), 0, 0, 0),
+        		EntityType.valueOf(type));
+        String full_type="";
+        //Random age.
+        if (entity instanceof Ageable) {
+    		Ageable en = (Ageable) entity;
+        	if (full) {
+        		if (rand.nextInt(2)==0) {
+            		full_type += "Baby-";
+            		en.setBaby();
+            		baby=true;
+        		}
+        	} else if (args[0].equalsIgnoreCase("baby")) {
+        		full_type+="Baby-";
+        		en.setBaby();
+        		baby=true;
+        	}
+        }
+        
+        if (entity instanceof Horse) {
+        	Horse en = (Horse) entity;
+			//color style variant
+        	if (baby) {
+        		if (args[1].equalsIgnoreCase("random") || full) {
+        			en.setColor(Color.values()[rand.nextInt(Color.values().length)]);
+        		} else {
+        			en.setColor(Color.valueOf(args[1].toUpperCase()));
+        		}
+        		if (args[2].equalsIgnoreCase("random") || full) {
+        			en.setStyle(Style.values()[rand.nextInt(Style.values().length)]);
+        		} else {
+        			en.setStyle(Style.valueOf(args[2].toUpperCase()));
+        		}
+        		if (args[3].equalsIgnoreCase("random") || full) {
+        			en.setVariant(Variant.values()[rand.nextInt(Variant.values().length)]);
+        		} else {
+        			en.setVariant(Variant.valueOf(args[3].toUpperCase()));
+        		}
+        	} else {
+        		if (args[0].equalsIgnoreCase("random") || full) {
+        			en.setColor(Color.values()[rand.nextInt(Color.values().length)]);
+        		} else {
+        			en.setColor(Color.valueOf(args[0].toUpperCase()));
+        		}
+        		if (args[1].equalsIgnoreCase("random") || full) {
+        			en.setStyle(Style.values()[rand.nextInt(Style.values().length)]);
+        		} else {
+        			en.setStyle(Style.valueOf(args[1].toUpperCase()));
+        		}
+        		if (args[2].equalsIgnoreCase("random") || full) {
+        			en.setVariant(Variant.values()[rand.nextInt(Variant.values().length)]);
+        		} else {
+        			en.setVariant(Variant.valueOf(args[2].toUpperCase()));
+        		}
+        	}
+            full_type += ((Horse) entity).getColor().toString() + "-";
+            full_type += ((Horse) entity).getStyle().toString() + "-";
+            full_type += ((Horse) entity).getVariant().toString() + "-";
+        }
+        if (entity instanceof Rabbit)
+        {
+        	Rabbit en = (Rabbit) entity;
+        	if (baby) {
+        		if (args[1].equalsIgnoreCase("random") || full) {
+        			en.setRabbitType(Type.values()[rand.nextInt(Type.values().length)]);
+        		} else {
+        			en.setRabbitType(Type.valueOf(args[1].toUpperCase()));
+        		}
+        	} else {
+        		if (args[0].equalsIgnoreCase("random") || full) {
+        			en.setRabbitType(Type.values()[rand.nextInt(Type.values().length)]);
+        		} else {
+        			en.setRabbitType(Type.valueOf(args[0].toUpperCase()));
+        		}
+        	}
+        	full_type += ((Rabbit) entity).getRabbitType().toString() + "-";
+        }
+        else if (entity instanceof Sheep) {
+        	Sheep en = (Sheep) entity;
+        	 if (baby) {
+         		if (args[1].equalsIgnoreCase("random") || full) {
+        			en.setColor(DyeColor.values()[rand.nextInt(DyeColor.values().length)]);
+        		} else {
+        			en.setColor(DyeColor.valueOf(args[1].toUpperCase()));
+        		}
+        	 } else {
+          		if (args[0].equalsIgnoreCase("random") || full) {
+         			en.setColor(DyeColor.values()[rand.nextInt(DyeColor.values().length)]);
+         		} else {
+        			en.setColor(DyeColor.valueOf(args[0].toUpperCase()));
+        		}
+        	 }
+        	 full_type += ((Sheep) entity).getColor().toString() + "-";
+        }
+        else if (entity instanceof Skeleton) {
+        	if (full || args[0].equalsIgnoreCase("random")) {
+        	if (rand.nextInt(2)==0) {
+        		((Skeleton) entity).setSkeletonType(SkeletonType.WITHER);
+        	}
+        	} else if (args[0].equalsIgnoreCase("wither")) {
+        		((Skeleton) entity).setSkeletonType(SkeletonType.WITHER);
+        	}
+        	full_type += ((Skeleton) entity).getSkeletonType() == SkeletonType.NORMAL ? "" : "WITHER-";
+        }
+        else if (entity instanceof Villager) {
+        	Villager en = (Villager) entity;
+        	if (baby) {
+        		if (args[1].equalsIgnoreCase("random") || full) {
+        			en.setProfession(Profession.values()[rand.nextInt(Profession.values().length)]);
+        		} else {
+        			en.setProfession(Profession.valueOf(args[1].toUpperCase()));
+        		}
+        	} else {
+        		if (args[0].equalsIgnoreCase("random") || full) {
+        			en.setProfession(Profession.values()[rand.nextInt(Profession.values().length)]);
+        		} else {
+        			en.setProfession(Profession.valueOf(args[0].toUpperCase()));
+        		}
+        	}
+            full_type += ((Villager) entity).getProfession().toString() + "-";
+        }
+        else if (entity instanceof Zombie) {
+        	Zombie en = (Zombie) entity;
+        	if (full) {
+            	if (rand.nextInt(2)==0) {
+            		en.setBaby(true);
+            	}
+        	} else if (args[0].equalsIgnoreCase("baby")) {
+        		en.setBaby(true);
+        	}
+        	if (en.isBaby()) {
+        		if (args[1].equalsIgnoreCase("random") || full) {
+                	if (rand.nextInt(2)==0) {
+                		en.setVillagerProfession(Profession.BLACKSMITH);
+                	}
+        		} else if (args[1].equalsIgnoreCase("villager")) {
+        			en.setVillagerProfession(Profession.BLACKSMITH);
+            	}
+        	} else {
+        		if (args[0].equalsIgnoreCase("random") || full) {
+                	if (rand.nextInt(2)==0) {
+                		en.setVillagerProfession(Profession.BLACKSMITH);
+                	}
+        		} else if (args[0].equalsIgnoreCase("villager")) {
+        			en.setVillagerProfession(Profession.BLACKSMITH);
+            	}
+        	}
+            full_type += ((Zombie) entity).isBaby() ? "Baby-" : "";
+            full_type += ((Zombie) entity).isVillager() ? "Villager-" : "";
+        } else if (entity instanceof Slime) {
+        	Slime en = (Slime) entity;
+    		if (args[0].equalsIgnoreCase("random") || full) {
+            	en.setSize((int) Math.pow(2, rand.nextInt(5)));
+    		} else {
+    			en.setSize(Integer.parseInt(args[0]));
+    		}
+            full_type += (((Slime) entity).getSize() + "-");
+        }
+        full_type+=type;
+        MobStats statsai = BattlePets.statsai.get(type.toLowerCase());
+        ItemStack item = new ItemStack(Material.MONSTER_EGG, 1);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(Language.defaultas.replace("{type}", full_type));
+        meta.setLore(Arrays.asList(Language.getMessage("type", true) + ": " + full_type, Language.getMessage("level", true) + ": 1", Language.getMessage("xp", true) + ": 0/" + statsai.XPForLevel, Language.getMessage("hp", true) + ": " + statsai.HP + "/" + statsai.HP, Language.getMessage("skillpoints", true) + ": " + statsai.SkillpointsForLevel, Language.getMessage("vitality", true) + ": 0", Language.getMessage("defense", true) + ": 0", Language.getMessage("strength", true) + ": 0", Language.getMessage("dexterity", true) + ": 0"));
+        item.setItemMeta(meta);
+        return item;
+    	} catch (Exception e) {
+    		return BattlePets.createEgg(type, args);
+    	}
+        
     }
 
     @Override
@@ -348,9 +544,7 @@ public class BattlePets extends JavaPlugin implements Listener {
         entityevents = new EntityEvents(this);
         inventoryevents = new InventoryEvents(this);
         playerevents = new PlayerEvents(this);
-        if (version.contains("1_8"))
-            armorstandevent = new ArmorStandEvent(this);
-
+        ArmorStandEvent event = new ArmorStandEvent(this);
         catcher = new MobCatching(this);
         shop = new Shop(this);
         lang = new Language(this);
@@ -410,7 +604,9 @@ public class BattlePets extends JavaPlugin implements Listener {
                         ids.add(val);
                     }
                     for (UUID val : ids) {
-                        if (!pets.get(val).isDead()) continue;
+                    	LivingEntity pet = pets.get(val);
+                        if (!pet.isDead() && pet.isValid()) continue;
+                   
                         try {
                             Bukkit.getPlayer(val).sendMessage(Language.getMessage("disabled_zone_return"));
                             return_pet(Bukkit.getPlayer(val));

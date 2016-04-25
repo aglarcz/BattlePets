@@ -80,10 +80,9 @@ public class MobCatching implements Listener {
             type += ((Horse) entity).getStyle().toString() + "-";
             type += ((Horse) entity).getVariant().toString() + "-";
         }
-        if (!plugin.version.equalsIgnoreCase("v1_7_R4")) {
-            if (entity instanceof Rabbit)
+        if (entity instanceof Rabbit)
                 type += ((Rabbit) entity).getRabbitType().toString() + "-";
-        }
+        
         if (entity instanceof Sheep) {
             type += ((Sheep) entity).getColor().toString() + "-";
         } else if (entity instanceof Skeleton) {

@@ -6,6 +6,8 @@ import darius0021.MobStats;
 import darius0021.versions.Spawning;
 import darius0021.versions.Util;
 import net.minecraft.server.v1_9_R1.*;
+
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
@@ -139,10 +141,11 @@ public class Spawning_v1_9_R1 implements Spawning {
                 else
                     ((Zombie) entity).setBaby(false);
                 if (type.length > 1)
-                    if (type[0].equalsIgnoreCase("villager") || type[1].equalsIgnoreCase("villager"))
+                    if (type[0].equalsIgnoreCase("villager") || type[1].equalsIgnoreCase("villager")) {
                         ((Zombie) entity).setVillagerProfession(Profession.BLACKSMITH);
-                    else
+                    } else {
                         ((Zombie) entity).setVillagerProfession(null);
+                    }
             } else if (entity instanceof PigZombie) {
                 ((PigZombie) entity).getEquipment().setItemInMainHand(new ItemStack(Material.GOLD_SWORD));
             } else if (entity instanceof Slime) {
@@ -154,6 +157,7 @@ public class Spawning_v1_9_R1 implements Spawning {
             try {
                 entity.remove();
             } catch (Exception ee) {
+            	ee.printStackTrace();
             }
             return null;
         }
@@ -202,7 +206,7 @@ public class Spawning_v1_9_R1 implements Spawning {
         if ((entity instanceof Skeleton && !lore.get(0).contains("WITHER")) || (entity instanceof Wither && !type[0].equalsIgnoreCase("baby")))
             tt.goalSelector.a(4, new PathfinderGoalArrowAttack((IRangedEntity) tt, statsai.Speed + Dexterity * statsai._Speed, 20, 60, 15.0F));
         else
-            tt.goalSelector.a(4, new PathFinderTargetSelector(tt, statsai.Speed + Dexterity * statsai._Speed, true));
+            tt.goalSelector.a(4, new PathFinderTargetAttack(tt, statsai.Speed + Dexterity * statsai._Speed, true));
         tt.goalSelector.a(2, new PathFinderGoalFollow(tt, ((CraftPlayer) event.getPlayer()).getHandle(), plugin.radius1, plugin.radius2, statsai.Speed + Dexterity * statsai._Speed));
 
         event.getPlayer().getInventory().remove(item);
@@ -240,7 +244,7 @@ public class Spawning_v1_9_R1 implements Spawning {
     }
 
     @Override
-    public void nameupdate(LivingEntity pet) {
+    public void nameUpdate(LivingEntity pet) {
         if (((CraftLivingEntity) pet).getHandle() instanceof ArmorStandPlus)
             ((ArmorStandPlus) ((CraftLivingEntity) pet).getHandle()).updatename();
         if (((CraftLivingEntity) pet).getHandle() instanceof CustomPet)
@@ -248,7 +252,7 @@ public class Spawning_v1_9_R1 implements Spawning {
     }
 
     @Override
-    public void returnas(LivingEntity pet) {
+    public void returnPet(LivingEntity pet) {
         if (((CraftLivingEntity) pet).getHandle() instanceof ArmorStandPlus)
             ((ArmorStandPlus) ((CraftLivingEntity) pet).getHandle()).removeall();
         if (((CraftLivingEntity) pet).getHandle() instanceof CustomPet)
