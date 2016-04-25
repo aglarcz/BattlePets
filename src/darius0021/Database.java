@@ -21,22 +21,22 @@ public class Database {
 
     public static void Enable() {
         table = "pets";
-        enabled = BattleMobs.plugin.getConfig().getBoolean("MySQL.Enabled");
+        enabled = BattlePets.plugin.getConfig().getBoolean("MySQL.Enabled");
         if (!enabled) return;
         Connection con = null;
         Statement st = null;
         ResultSet rs = null;
-        port = BattleMobs.plugin.getConfig().getString("MySQL.Port");
-        url = "jdbc:mysql://" + BattleMobs.plugin.getConfig().getString("MySQL.IP") + ":" + port + "/" + BattleMobs.plugin.getConfig().getString("MySQL.Database") + "?useUnicode=true&characterEncoding=utf-8";
-        user = BattleMobs.plugin.getConfig().getString("MySQL.Username");
-        password = BattleMobs.plugin.getConfig().getString("MySQL.Password");
+        port = BattlePets.plugin.getConfig().getString("MySQL.Port");
+        url = "jdbc:mysql://" + BattlePets.plugin.getConfig().getString("MySQL.IP") + ":" + port + "/" + BattlePets.plugin.getConfig().getString("MySQL.Database") + "?useUnicode=true&characterEncoding=utf-8";
+        user = BattlePets.plugin.getConfig().getString("MySQL.Username");
+        password = BattlePets.plugin.getConfig().getString("MySQL.Password");
 
         //bando prisijungti.
         try {
             con = DriverManager.getConnection(url, user, password);
             st = con.createStatement();
         } catch (SQLException ex) {
-            BattleMobs.plugin.getLogger().info("Couldn't connect to MySQL.");
+            BattlePets.plugin.getLogger().info("Couldn't connect to MySQL.");
             enabled = false;
             return;
         }
@@ -142,7 +142,7 @@ public class Database {
     }
 
     public static LivingEntity LoadPet(Player p) {
-        if (!BattleMobs.AllWorlds && !BattleMobs.worlds.contains(p.getWorld().getName()))
+        if (!BattlePets.AllWorlds && !BattlePets.worlds.contains(p.getWorld().getName()))
             return null;
 
         Connection con = null;
@@ -199,13 +199,13 @@ public class Database {
             tipas += "baby-";
         }
         tipas += argumentai[argumentai.length - 1].toLowerCase();
-        MobStats stats = BattleMobs.statsai.get(tipas);
+        MobStats stats = BattlePets.statsai.get(tipas);
         meta.setDisplayName(name);
         meta.setLore(Arrays.asList(Language.getMessage("type", true) + ": " + type, Language.getMessage("level", true) + ": " + level, Language.getMessage("xp", true) + ": " + xp + "/" + stats.XPForLevel, Language.getMessage("hp", true) + ": " + hp + "/" + stats.HP, Language.getMessage("skillpoints", true) + ": " + skillpoints, Language.getMessage("vitality", true) + ": " + vitality, Language.getMessage("defense", true) + ": " + defense, Language.getMessage("strength", true) + ": " + strength, Language.getMessage("dexterity", true) + ": " + dexterity));
         item.setItemMeta(meta);
-        pet = BattleMobs.spawning.SpawnCreature(new PlayerInteractEvent(p, Action.RIGHT_CLICK_BLOCK, item, p.getLocation().getBlock(), BlockFace.DOWN), (BattleMobs) BattleMobs.plugin);
+        pet = BattlePets.spawning.SpawnCreature(new PlayerInteractEvent(p, Action.RIGHT_CLICK_BLOCK, item, p.getLocation().getBlock(), BlockFace.DOWN), (BattlePets) BattlePets.plugin);
         if (pet != null)
-            BattleMobs.pets.put(p.getUniqueId(), pet);
+            BattlePets.pets.put(p.getUniqueId(), pet);
         return pet;
     }
 }

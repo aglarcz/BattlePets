@@ -1,6 +1,6 @@
 package darius0021.events;
 
-import darius0021.BattleMobs;
+import darius0021.BattlePets;
 import darius0021.Language;
 import darius0021.MobStats;
 import org.bukkit.Bukkit;
@@ -19,9 +19,9 @@ import org.bukkit.metadata.FixedMetadataValue;
 import java.util.UUID;
 
 public class EntityEvents implements Listener {
-    BattleMobs plugin;
+    BattlePets plugin;
 
-    public EntityEvents(BattleMobs plugin) {
+    public EntityEvents(BattlePets plugin) {
         this.plugin = plugin;
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -42,7 +42,7 @@ public class EntityEvents implements Listener {
             if (event.getEntity() instanceof ArmorStand)
                 if (event.getEntity().hasMetadata("Owner")) {
                     event.setCancelled(true);
-                    BattleMobs.pets.get(UUID.fromString(event.getEntity().getMetadata("Owner").get(0).asString())).damage(event.getDamage(), event.getDamager());
+                    BattlePets.pets.get(UUID.fromString(event.getEntity().getMetadata("Owner").get(0).asString())).damage(event.getDamage(), event.getDamager());
                     return;
                 }
         if (event.getDamager() instanceof Projectile) {
@@ -58,7 +58,7 @@ public class EntityEvents implements Listener {
         }
         if (!event.getDamager().hasMetadata("Owner")) return;
         LivingEntity pet = (LivingEntity) event.getDamager();
-        BattleMobs.AddXP(pet, event.getDamage());
+        BattlePets.AddXP(pet, event.getDamage());
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -68,7 +68,7 @@ public class EntityEvents implements Listener {
         LivingEntity pet = null;
         if (!plugin.version.contains("1_7"))
             if (event.getEntity() instanceof ArmorStand) {
-                pet = BattleMobs.pets.get(UUID.fromString(event.getEntity().getMetadata("Owner").get(0).asString()));
+                pet = BattlePets.pets.get(UUID.fromString(event.getEntity().getMetadata("Owner").get(0).asString()));
                 event.setCancelled(true);
                 pet.damage(event.getDamage(), event.getDamager());
                 return;
@@ -83,17 +83,17 @@ public class EntityEvents implements Listener {
         if (typeconf.equalsIgnoreCase("endermite"))
             typeconf = "block";
         MobStats stats;
-        stats = BattleMobs.statsai.get(typeconf);
+        stats = BattlePets.statsai.get(typeconf);
         event.setDamage(Math.max(0, event.getDamage() - stats.Defense - pet.getMetadata("Defense").get(0).asInt() * stats._Defense));
 
         if (event.getDamager() instanceof LivingEntity) {
             if (event.getDamager() instanceof Player) {
                 Player p = (Player) event.getDamager();
                 if (!p.getUniqueId().equals(UUID.fromString(event.getEntity().getMetadata("Owner").get(0).asString())))
-                    BattleMobs.spawning.setTarget(pet, (LivingEntity) event.getDamager());
+                    BattlePets.spawning.setTarget(pet, (LivingEntity) event.getDamager());
                 return;
             }
-            BattleMobs.spawning.setTarget(pet, (LivingEntity) event.getDamager());
+            BattlePets.spawning.setTarget(pet, (LivingEntity) event.getDamager());
         }
     }
 
@@ -105,7 +105,7 @@ public class EntityEvents implements Listener {
         Player p = Bukkit.getPlayer(UUID.fromString(pet.getMetadata("Owner").get(0).asString()));
         p.closeInventory();
         p.sendMessage(Language.getMessage("pet_died"));
-        BattleMobs.return_pet(p);
+        BattlePets.return_pet(p);
         event.getDrops().clear();
         event.setDroppedExp(0);
     }
@@ -160,7 +160,7 @@ public class EntityEvents implements Listener {
     @EventHandler(priority = EventPriority.LOW)
     public void onDMG(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Egg) {
-            event.getDamager().setMetadata("Cancel", new FixedMetadataValue(BattleMobs.plugin, " "));
+            event.getDamager().setMetadata("Cancel", new FixedMetadataValue(BattlePets.plugin, " "));
         }
     }
 

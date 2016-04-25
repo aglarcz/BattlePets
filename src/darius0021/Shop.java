@@ -23,11 +23,11 @@ import java.util.logging.Level;
 
 public class Shop implements Listener {
     public static Map<String, Menu> menus = new HashMap<String, Menu>();
-    BattleMobs plugin;
+    BattlePets plugin;
     Economy eco = null;
     Itemas revive_item;
 
-    public Shop(BattleMobs plugin) {
+    public Shop(BattlePets plugin) {
         this.plugin = plugin;
         if (Bukkit.getPluginManager().isPluginEnabled("Vault"))
             eco = Bukkit.getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class).getProvider();
@@ -46,8 +46,8 @@ public class Shop implements Listener {
         Inventory inv = Bukkit.createInventory(p, meniu.Size, meniu.DisplayName);
         for (Itemas item : meniu.items.values()) {
             if (p.hasPermission(item.perm)) {
-                if (BattleMobs.pets.containsKey(p.getUniqueId())) {
-                    if (BattleMobs.pets.get(p.getUniqueId()).getMetadata("Level").get(0).asInt() >= item.level)
+                if (BattlePets.pets.containsKey(p.getUniqueId())) {
+                    if (BattlePets.pets.get(p.getUniqueId()).getMetadata("Level").get(0).asInt() >= item.level)
                         inv.setItem(item.index, item.item);
                 } else
                     inv.setItem(item.index, item.item);
@@ -188,7 +188,7 @@ public class Shop implements Listener {
     void DoTheJob(Player p, String fulljob) {
         String[] jobargs = fulljob.split(":");
         String partjob = jobargs[0].toLowerCase();
-        LivingEntity pet = BattleMobs.pets.get(p.getUniqueId());
+        LivingEntity pet = BattlePets.pets.get(p.getUniqueId());
         switch (partjob) {
             case "revive":
                 ItemStack item2 = p.getInventory().getItemInHand();
@@ -210,7 +210,7 @@ public class Shop implements Listener {
                 p.sendMessage(Language.getMessage("pet_healed"));
                 break;
             case "xp":
-                BattleMobs.AddXP(pet, Double.parseDouble(jobargs[1]));
+                BattlePets.AddXP(pet, Double.parseDouble(jobargs[1]));
                 p.sendMessage(Language.getMessage("pet_xpbought"));
                 break;
             case "skillpoints":
@@ -229,7 +229,7 @@ public class Shop implements Listener {
                     type += "baby-";
                 }
                 type += jobargs[2].split("-")[jobargs[2].split("-").length - 1].toLowerCase();
-                MobStats statsai = BattleMobs.statsai.get(type);
+                MobStats statsai = BattlePets.statsai.get(type);
                 if (statsai == null) {
                     Bukkit.getLogger().log(Level.WARNING, "Egg type: '" + jobargs[2] + "' not found!");
                     return;
@@ -261,12 +261,12 @@ public class Shop implements Listener {
                 pet.setMetadata("Dexterity", new FixedMetadataValue(plugin, 0));
 
                 pet.setMetadata("Points", new FixedMetadataValue(plugin, total));
-                BattleMobs.spawning.update(pet, plugin);
+                BattlePets.spawning.update(pet, plugin);
                 p.sendMessage(Language.getMessage("reset_bought"));
                 break;
             case "openmenu":
                 if (jobargs[1].equalsIgnoreCase("return")) {
-                    BattleMobs.openmenu(p, BattleMobs.pets.get(p.getUniqueId()));
+                    BattlePets.openmenu(p, BattlePets.pets.get(p.getUniqueId()));
                     return;
                 }
                 openshop(p, jobargs[1]);

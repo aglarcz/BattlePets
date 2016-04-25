@@ -1,6 +1,6 @@
 package darius0021.events;
 
-import darius0021.BattleMobs;
+import darius0021.BattlePets;
 import darius0021.Language;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
@@ -12,9 +12,9 @@ import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
 import java.util.UUID;
 
 public class ArmorStandEvent implements Listener {
-    BattleMobs plugin;
+    BattlePets plugin;
 
-    public ArmorStandEvent(BattleMobs plugin) {
+    public ArmorStandEvent(BattlePets plugin) {
         this.plugin = plugin;
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -30,7 +30,7 @@ public class ArmorStandEvent implements Listener {
             p.sendMessage(Language.getMessage("petmenu_failed"));
             return;
         }
-        LivingEntity pet = BattleMobs.pets.get(owner);
-        BattleMobs.openmenu(p, pet);
+        LivingEntity pet = BattlePets.pets.get(owner);
+        BattlePets.openmenu(p, pet);
     }
 }

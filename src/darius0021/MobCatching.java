@@ -16,13 +16,13 @@ import java.util.Random;
 
 public class MobCatching implements Listener {
     Random rand;
-    BattleMobs plugin;
+    BattlePets plugin;
     Player player;
     Egg egg;
     LivingEntity creature;
     Entity entity;
 
-    public MobCatching(BattleMobs plugin) {
+    public MobCatching(BattlePets plugin) {
         this.plugin = plugin;
         Bukkit.getPluginManager().registerEvents(this, plugin);
         rand = new Random();
@@ -35,7 +35,7 @@ public class MobCatching implements Listener {
         if (!(((Egg) event.getDamager()).getShooter() instanceof Player)) return;
         egg = (Egg) event.getDamager();
         player = (Player) egg.getShooter();
-        if (!BattleMobs.AllWorlds && !BattleMobs.worlds.contains(player.getWorld().getName())) {
+        if (!BattlePets.AllWorlds && !BattlePets.worlds.contains(player.getWorld().getName())) {
             player.sendMessage(Language.getMessage("disabled_world"));
             return;
         }
@@ -49,7 +49,7 @@ public class MobCatching implements Listener {
         typeconf += entity.getType().toString().toLowerCase();
         //if (typeconf.equalsIgnoreCase("endermite"))
         //	typeconf="block";
-        if (!BattleMobs.statsai.containsKey(typeconf)) {
+        if (!BattlePets.statsai.containsKey(typeconf)) {
             player.sendMessage(Language.getMessage("pet_notcatchable"));
             return;
         }
@@ -57,7 +57,7 @@ public class MobCatching implements Listener {
             player.sendMessage(Language.getMessage("pet_noperm_catch"));
             return;
         }
-        MobStats statsai = BattleMobs.statsai.get(typeconf);
+        MobStats statsai = BattlePets.statsai.get(typeconf);
         if (player.getLevel() < statsai.reqlvl) {
             player.sendMessage(Language.getMessage("pet_lowlevel_catch"));
             return;

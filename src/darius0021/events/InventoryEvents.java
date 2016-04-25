@@ -1,6 +1,6 @@
 package darius0021.events;
 
-import darius0021.BattleMobs;
+import darius0021.BattlePets;
 import darius0021.Language;
 import darius0021.MobStats;
 import darius0021.Shop;
@@ -22,9 +22,9 @@ import org.bukkit.metadata.FixedMetadataValue;
 import java.util.Arrays;
 
 public class InventoryEvents implements Listener {
-    BattleMobs plugin;
+    BattlePets plugin;
 
-    public InventoryEvents(BattleMobs plugin) {
+    public InventoryEvents(BattlePets plugin) {
         this.plugin = plugin;
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -41,7 +41,7 @@ public class InventoryEvents implements Listener {
         String skillsmenu = ChatColor.stripColor(Language.getMessage("menu_skillpoints", true));
         if (invname.equalsIgnoreCase(petmenu)) {
             event.setCancelled(true);
-            LivingEntity pet = BattleMobs.pets.get(((Player) event.getWhoClicked()).getUniqueId());
+            LivingEntity pet = BattlePets.pets.get(((Player) event.getWhoClicked()).getUniqueId());
             if (pet == null) ((Player) event.getWhoClicked()).closeInventory();
             else
                 mainmenu(event);
@@ -49,7 +49,7 @@ public class InventoryEvents implements Listener {
         }
         if (invname.equalsIgnoreCase(skillsmenu)) {
             event.setCancelled(true);
-            LivingEntity pet = BattleMobs.pets.get(((Player) event.getWhoClicked()).getUniqueId());
+            LivingEntity pet = BattlePets.pets.get(((Player) event.getWhoClicked()).getUniqueId());
             if (pet == null) ((Player) event.getWhoClicked()).closeInventory();
             else
                 skillmenu(event);
@@ -57,8 +57,8 @@ public class InventoryEvents implements Listener {
         }
         if (event.getClickedInventory() instanceof HorseInventory) {
 
-            if (BattleMobs.pets.containsKey(((Player) event.getWhoClicked()).getUniqueId())) {
-                LivingEntity pet = BattleMobs.pets.get(((Player) event.getWhoClicked()).getUniqueId());
+            if (BattlePets.pets.containsKey(((Player) event.getWhoClicked()).getUniqueId())) {
+                LivingEntity pet = BattlePets.pets.get(((Player) event.getWhoClicked()).getUniqueId());
                 if (pet instanceof Horse) {
                     if (pet.getPassenger() == ((Player) event.getWhoClicked()))
                         event.setCancelled(true);
@@ -83,7 +83,7 @@ public class InventoryEvents implements Listener {
             }
         }
         if (choose.equalsIgnoreCase(returnas)) {
-            BattleMobs.return_pet((Player) event.getWhoClicked());
+            BattlePets.return_pet((Player) event.getWhoClicked());
             ((Player) event.getWhoClicked()).closeInventory();
             return;
         }
@@ -92,11 +92,11 @@ public class InventoryEvents implements Listener {
             return;
         }
         if (choose.equalsIgnoreCase(skillpoints)) {
-            BattleMobs.skillpointsmenu((Player) event.getWhoClicked());
+            BattlePets.skillpointsmenu((Player) event.getWhoClicked());
             return;
         }
         if (choose.equalsIgnoreCase(ride)) {
-            BattleMobs.pets.get(((Player) event.getWhoClicked()).getUniqueId()).setPassenger(event.getWhoClicked());
+            BattlePets.pets.get(((Player) event.getWhoClicked()).getUniqueId()).setPassenger(event.getWhoClicked());
             return;
         }
         if (choose.equalsIgnoreCase(battle)) {
@@ -118,7 +118,7 @@ public class InventoryEvents implements Listener {
         if (!click.equalsIgnoreCase("pickup_all") && !click.equalsIgnoreCase("pickup_half")) return;
         int slot = event.getRawSlot();
         if (slot == 8) {
-            BattleMobs.openmenu((Player) event.getWhoClicked(), BattleMobs.pets.get(((Player) event.getWhoClicked()).getUniqueId()));
+            BattlePets.openmenu((Player) event.getWhoClicked(), BattlePets.pets.get(((Player) event.getWhoClicked()).getUniqueId()));
         }
         if (event.getClickedInventory().getSize() == 9) return;
         int currentpoints = Integer.valueOf(event.getClickedInventory().getItem(0).getItemMeta().getLore().get(0).substring(
@@ -128,7 +128,7 @@ public class InventoryEvents implements Listener {
             case 12:
             case 13:
             case 14:
-                LivingEntity pet = BattleMobs.pets.get(((Player) event.getWhoClicked()).getUniqueId());
+                LivingEntity pet = BattlePets.pets.get(((Player) event.getWhoClicked()).getUniqueId());
                 String type = pet.getMetadata("Type").get(0).asString().toLowerCase();
                 String st = "";
                 if (type.contains("baby"))
@@ -136,7 +136,7 @@ public class InventoryEvents implements Listener {
                 st += pet.getType().toString().toLowerCase();
                 if (st.equalsIgnoreCase("endermite"))
                     st = "block";
-                MobStats stats = BattleMobs.statsai.get(st);
+                MobStats stats = BattlePets.statsai.get(st);
                 String lore = event.getClickedInventory().getItem(slot - 9).getItemMeta().getLore().get(0);
                 int viso = Integer.parseInt(lore.substring(lore.lastIndexOf(":") + 2));
                 String name = event.getClickedInventory().getItem(slot).getItemMeta().getDisplayName();
@@ -172,7 +172,7 @@ public class InventoryEvents implements Listener {
         }
         if (slot == 17) {
             //save
-            LivingEntity pet = BattleMobs.pets.get(((Player) event.getWhoClicked()).getUniqueId());
+            LivingEntity pet = BattlePets.pets.get(((Player) event.getWhoClicked()).getUniqueId());
             Inventory inv = event.getClickedInventory();
             int plusvitality = 0, plusstrength = 0, plusdefense = 0, plusdexterity = 0;
 
@@ -180,13 +180,13 @@ public class InventoryEvents implements Listener {
             plusstrength = Integer.parseInt(inv.getItem(12).getItemMeta().getDisplayName().substring(inv.getItem(12).getItemMeta().getDisplayName().lastIndexOf("+")));
             plusdefense = Integer.parseInt(inv.getItem(13).getItemMeta().getDisplayName().substring(inv.getItem(13).getItemMeta().getDisplayName().lastIndexOf("+")));
             plusdexterity = Integer.parseInt(inv.getItem(14).getItemMeta().getDisplayName().substring(inv.getItem(14).getItemMeta().getDisplayName().lastIndexOf("+")));
-            BattleMobs pl = (BattleMobs) BattleMobs.plugin;
+            BattlePets pl = (BattlePets) BattlePets.plugin;
             pet.setMetadata("Vitality", new FixedMetadataValue(pl, pet.getMetadata("Vitality").get(0).asInt() + plusvitality));
             pet.setMetadata("Strength", new FixedMetadataValue(pl, pet.getMetadata("Strength").get(0).asInt() + plusstrength));
             pet.setMetadata("Defense", new FixedMetadataValue(pl, pet.getMetadata("Defense").get(0).asInt() + plusdefense));
             pet.setMetadata("Dexterity", new FixedMetadataValue(pl, pet.getMetadata("Dexterity").get(0).asInt() + plusdexterity));
             pet.setMetadata("Points", new FixedMetadataValue(pl, currentpoints));
-            BattleMobs.spawning.update(pet, pl);
+            BattlePets.spawning.update(pet, pl);
             ((Player) event.getWhoClicked()).sendMessage(Language.getMessage("skills_saved"));
             event.getWhoClicked().closeInventory();
         }

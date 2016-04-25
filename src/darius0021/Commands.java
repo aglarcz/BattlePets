@@ -42,8 +42,8 @@ public class Commands {
         }
         if (args[0].equalsIgnoreCase("reload")) {
             if (sender.hasPermission("battlepets.reload")) {
-                BattleMobs.plugin.reloadConfig();
-                ((BattleMobs) BattleMobs.plugin).reload();
+                BattlePets.plugin.reloadConfig();
+                ((BattlePets) BattlePets.plugin).reload();
                 sender.sendMessage(Language.getMessage("reloaded"));
             } else {
                 sender.sendMessage(Language.getMessage("no_permission"));
@@ -82,11 +82,11 @@ public class Commands {
                 return true;
             }
             args[1] = args[1].toLowerCase();
-            if (!BattleMobs.pets.containsKey(((Player) sender).getUniqueId())) {
+            if (!BattlePets.pets.containsKey(((Player) sender).getUniqueId())) {
                 sender.sendMessage(Language.getMessage("NoPetAlive"));
                 return true;
             }
-            LivingEntity pet = BattleMobs.pets.get(((Player) sender).getUniqueId());
+            LivingEntity pet = BattlePets.pets.get(((Player) sender).getUniqueId());
             double kiekis = 0;
             try {
                 kiekis = Double.parseDouble(args[2]);
@@ -100,10 +100,10 @@ public class Commands {
             }
             switch (args[1]) {
                 case "skillpoints":
-                    pet.setMetadata("Points", new FixedMetadataValue(BattleMobs.plugin, (int) kiekis));
+                    pet.setMetadata("Points", new FixedMetadataValue(BattlePets.plugin, (int) kiekis));
                     break;
                 case "xp":
-                    pet.setMetadata("XP", new FixedMetadataValue(BattleMobs.plugin,
+                    pet.setMetadata("XP", new FixedMetadataValue(BattlePets.plugin,
                             Math.min(kiekis, pet.getMetadata("XPForLevel").get(0).asDouble() - 0.01)));
                     break;
                 case "level":
@@ -117,29 +117,29 @@ public class Commands {
                         st += pet.getType().toString().toLowerCase();
                         if (st.equalsIgnoreCase("endermite"))
                             st = "block";
-                        MobStats stats = BattleMobs.statsai.get(st);
-                        pet.setMetadata("Points", new FixedMetadataValue(BattleMobs.plugin, pet.getMetadata("Points").get(0).asInt() + stats.SkillpointsForLevel * (neww - curr)));
+                        MobStats stats = BattlePets.statsai.get(st);
+                        pet.setMetadata("Points", new FixedMetadataValue(BattlePets.plugin, pet.getMetadata("Points").get(0).asInt() + stats.SkillpointsForLevel * (neww - curr)));
                     }
-                    pet.setMetadata("Level", new FixedMetadataValue(BattleMobs.plugin, (int) kiekis));
-                    BattleMobs.spawning.update(pet, (BattleMobs) BattleMobs.plugin);
+                    pet.setMetadata("Level", new FixedMetadataValue(BattlePets.plugin, (int) kiekis));
+                    BattlePets.spawning.update(pet, (BattlePets) BattlePets.plugin);
                     pet.setCustomName(ChatColor.translateAlternateColorCodes('&', Language.display.replace("{name}", pet.getMetadata("Name").get(0).asString()).replace("{level}", pet.getMetadata("Level").get(0).asInt() + "")));
 
                     break;
                 case "vitality":
-                    pet.setMetadata("Vitality", new FixedMetadataValue(BattleMobs.plugin, (int) kiekis));
-                    BattleMobs.spawning.update(pet, (BattleMobs) BattleMobs.plugin);
+                    pet.setMetadata("Vitality", new FixedMetadataValue(BattlePets.plugin, (int) kiekis));
+                    BattlePets.spawning.update(pet, (BattlePets) BattlePets.plugin);
                     break;
                 case "dexterity":
-                    pet.setMetadata("Dexterity", new FixedMetadataValue(BattleMobs.plugin, (int) kiekis));
-                    BattleMobs.spawning.update(pet, (BattleMobs) BattleMobs.plugin);
+                    pet.setMetadata("Dexterity", new FixedMetadataValue(BattlePets.plugin, (int) kiekis));
+                    BattlePets.spawning.update(pet, (BattlePets) BattlePets.plugin);
                     break;
                 case "defense":
-                    pet.setMetadata("Defense", new FixedMetadataValue(BattleMobs.plugin, (int) kiekis));
-                    BattleMobs.spawning.update(pet, (BattleMobs) BattleMobs.plugin);
+                    pet.setMetadata("Defense", new FixedMetadataValue(BattlePets.plugin, (int) kiekis));
+                    BattlePets.spawning.update(pet, (BattlePets) BattlePets.plugin);
                     break;
                 case "strength":
-                    pet.setMetadata("Strength", new FixedMetadataValue(BattleMobs.plugin, (int) kiekis));
-                    BattleMobs.spawning.update(pet, (BattleMobs) BattleMobs.plugin);
+                    pet.setMetadata("Strength", new FixedMetadataValue(BattlePets.plugin, (int) kiekis));
+                    BattlePets.spawning.update(pet, (BattlePets) BattlePets.plugin);
                     break;
             }
             sender.sendMessage(Language.getMessage("petupdated"));
@@ -155,8 +155,8 @@ public class Commands {
         }
         if (args[0].equalsIgnoreCase("cancel") && sender instanceof Player) {
             if (sender.hasPermission("battlepets.cancel")) {
-                if (BattleMobs.pets.containsKey(((Player) sender).getUniqueId())) {
-                    BattleMobs.spawning.setTarget(BattleMobs.pets.get(((Player) sender).getUniqueId()), null);
+                if (BattlePets.pets.containsKey(((Player) sender).getUniqueId())) {
+                    BattlePets.spawning.setTarget(BattlePets.pets.get(((Player) sender).getUniqueId()), null);
                 }
                 return true;
             } else {
@@ -165,8 +165,8 @@ public class Commands {
         }
         if (args[0].equalsIgnoreCase("menu") && sender instanceof Player) {
             if (sender.hasPermission("battlepets.menu")) {
-                if (BattleMobs.pets.containsKey(((Player) sender).getUniqueId())) {
-                    BattleMobs.openmenu((Player) sender, BattleMobs.pets.get(((Player) sender).getUniqueId()));
+                if (BattlePets.pets.containsKey(((Player) sender).getUniqueId())) {
+                    BattlePets.openmenu((Player) sender, BattlePets.pets.get(((Player) sender).getUniqueId()));
                 } else {
                     sender.sendMessage(Language.getMessage("NoPetAlive"));
                 }
@@ -179,16 +179,16 @@ public class Commands {
             if (sender.hasPermission("battlepets.name")) {
 
                 if (args.length == 2) {
-                    if (!BattleMobs.pets.containsKey(((Player) sender).getUniqueId())) {
+                    if (!BattlePets.pets.containsKey(((Player) sender).getUniqueId())) {
                         sender.sendMessage(Language.getMessage("NoPetAlive"));
                         return true;
                     }
-                    if (args[1].length() > BattleMobs.namesize) {
+                    if (args[1].length() > BattlePets.namesize) {
                         sender.sendMessage(Language.getMessage("pet_name_toolong"));
                         return true;
                     }
-                    LivingEntity pet = BattleMobs.pets.get(((Player) sender).getUniqueId());
-                    pet.setMetadata("Name", new FixedMetadataValue(BattleMobs.plugin, args[1]));
+                    LivingEntity pet = BattlePets.pets.get(((Player) sender).getUniqueId());
+                    pet.setMetadata("Name", new FixedMetadataValue(BattlePets.plugin, args[1]));
                     sender.sendMessage(Language.getMessage("pet_renamed"));
                     pet.setCustomName(ChatColor.translateAlternateColorCodes('&', Language.display.replace("{name}", pet.getMetadata("Name").get(0).asString()).replace("{level}", pet.getMetadata("Level").get(0).asString() + "")));
                     //sender.sendMessage(Language.getMessage("renamed_warn"));
@@ -225,7 +225,7 @@ public class Commands {
                 type += "baby-";
             }
             type += argumentai[argumentai.length - 1].toLowerCase();
-            if (!BattleMobs.statsai.containsKey(type)) {
+            if (!BattlePets.statsai.containsKey(type)) {
                 sender.sendMessage(Language.getMessage("type_unavailable"));
                 return true;
             }
@@ -307,7 +307,7 @@ public class Commands {
             }
             if (type.equalsIgnoreCase("endermite"))
                 type = "block";
-            MobStats stats = BattleMobs.statsai.get(type);
+            MobStats stats = BattlePets.statsai.get(type);
             ItemStack item = new ItemStack(Material.MONSTER_EGG, 1);
             ItemMeta meta = item.getItemMeta();
             if (args.length > 3) {

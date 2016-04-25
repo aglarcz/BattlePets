@@ -1,9 +1,10 @@
 package darius0021.events;
 
-import darius0021.BattleMobs;
+import darius0021.BattlePets;
 import darius0021.Database;
 import darius0021.Language;
-import darius0021.reflection.v1_9_1.util1_9;
+import darius0021.versions.v1_9_1.util1_9;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -33,9 +34,9 @@ public class PlayerEvents implements Listener {
     public static List<UUID> namechanging = new ArrayList<UUID>();
     public static Map<UUID, UUID> battles = new HashMap<UUID, UUID>();
     public List<UUID> interact = new ArrayList<UUID>();
-    BattleMobs plugin;
+    BattlePets plugin;
 
-    public PlayerEvents(BattleMobs plugin) {
+    public PlayerEvents(BattlePets plugin) {
         this.plugin = plugin;
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
@@ -58,7 +59,7 @@ public class PlayerEvents implements Listener {
 
                     if (battles.get(p2.getUniqueId()) == null || !battles.get(p2.getUniqueId()).equals(p1.getUniqueId())) {
 
-                        if (!BattleMobs.pets.containsKey(p2.getUniqueId())) {
+                        if (!BattlePets.pets.containsKey(p2.getUniqueId())) {
                             p1.sendMessage(Language.getMessage("battle_no_pet"));
                             return;
                         }
@@ -69,7 +70,7 @@ public class PlayerEvents implements Listener {
                     }
                 } else {
 
-                    if (!BattleMobs.pets.containsKey(p2.getUniqueId())) {
+                    if (!BattlePets.pets.containsKey(p2.getUniqueId())) {
                         p1.sendMessage(Language.getMessage("battle_no_pet"));
                         return;
                     }
@@ -86,12 +87,12 @@ public class PlayerEvents implements Listener {
                         return;
                     }
                     //FIGHT.
-                    if (BattleMobs.pets.containsKey(p1.getUniqueId()) && BattleMobs.pets.containsKey(p2.getUniqueId())) {
+                    if (BattlePets.pets.containsKey(p1.getUniqueId()) && BattlePets.pets.containsKey(p2.getUniqueId())) {
                         LivingEntity pet1, pet2;
-                        pet1 = BattleMobs.pets.get(p1.getUniqueId());
-                        pet2 = BattleMobs.pets.get(p2.getUniqueId());
-                        BattleMobs.spawning.setTarget(pet1, pet2);
-                        BattleMobs.spawning.setTarget(pet2, pet1);
+                        pet1 = BattlePets.pets.get(p1.getUniqueId());
+                        pet2 = BattlePets.pets.get(p2.getUniqueId());
+                        BattlePets.spawning.setTarget(pet1, pet2);
+                        BattlePets.spawning.setTarget(pet2, pet1);
                         p1.sendMessage(Language.getMessage("battle_started"));
                         p2.sendMessage(Language.getMessage("battle_started"));
                         battles.remove(p2.getUniqueId());
@@ -110,7 +111,7 @@ public class PlayerEvents implements Listener {
             return;
         }
 
-        BattleMobs.openmenu(p, pet);
+        BattlePets.openmenu(p, pet);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -127,19 +128,19 @@ public class PlayerEvents implements Listener {
         }
         if (event.getDamager() instanceof Player) p = (Player) event.getDamager();
         if (p != null) {
-            if (!BattleMobs.pets.containsKey(p.getUniqueId())) return;
-            LivingEntity pet = BattleMobs.pets.get(p.getUniqueId());
+            if (!BattlePets.pets.containsKey(p.getUniqueId())) return;
+            LivingEntity pet = BattlePets.pets.get(p.getUniqueId());
             if (event.getEntity() == pet) {
                 event.setCancelled(true);
                 return;
 
             }
-            BattleMobs.spawning.setTarget(pet, (LivingEntity) event.getEntity());
+            BattlePets.spawning.setTarget(pet, (LivingEntity) event.getEntity());
         }
         if (event.getEntity() instanceof Player) {
             p = (Player) event.getEntity();
-            if (BattleMobs.pets.containsKey(p.getUniqueId())) {
-                LivingEntity pet = BattleMobs.pets.get(p.getUniqueId());
+            if (BattlePets.pets.containsKey(p.getUniqueId())) {
+                LivingEntity pet = BattlePets.pets.get(p.getUniqueId());
                 LivingEntity attacker = null;
                 if (event.getDamager() instanceof Projectile) {
                     Projectile proj = (Projectile) event.getDamager();
@@ -148,7 +149,7 @@ public class PlayerEvents implements Listener {
                     }
                 }
                 if (event.getDamager() instanceof LivingEntity) attacker = (LivingEntity) event.getDamager();
-                if (attacker != null) BattleMobs.spawning.setTarget(pet, attacker);
+                if (attacker != null) BattlePets.spawning.setTarget(pet, attacker);
             }
         }
     }
@@ -168,22 +169,22 @@ public class PlayerEvents implements Listener {
         if (event.getClickedBlock().getType() == Material.MOB_SPAWNER) {
             event.setCancelled(true);
         }
-        if (!BattleMobs.AllWorlds && !BattleMobs.worlds.contains(event.getPlayer().getWorld().getName())) {
+        if (!BattlePets.AllWorlds && !BattlePets.worlds.contains(event.getPlayer().getWorld().getName())) {
             event.getPlayer().sendMessage(Language.getMessage("disabled_world"));
             return;
         }
-        if (BattleMobs.wg != null)
-            if (!BattleMobs.wg.isAllowed(event.getPlayer())) {
+        if (BattlePets.wg != null)
+            if (!BattlePets.wg.isAllowed(event.getPlayer())) {
                 event.getPlayer().sendMessage(Language.getMessage("disabled_zone"));
                 return;
             }
-        if (BattleMobs.pets.containsKey(event.getPlayer().getUniqueId())) {
+        if (BattlePets.pets.containsKey(event.getPlayer().getUniqueId())) {
             event.getPlayer().sendMessage(Language.getMessage("second_pet"));
             return;
         }
-        LivingEntity pet = BattleMobs.spawning.SpawnCreature(event, plugin);
+        LivingEntity pet = BattlePets.spawning.SpawnCreature(event, plugin);
         if (pet != null)
-            BattleMobs.pets.put(event.getPlayer().getUniqueId(), pet);
+            BattlePets.pets.put(event.getPlayer().getUniqueId(), pet);
 
     }
 
@@ -193,14 +194,14 @@ public class PlayerEvents implements Listener {
             namechanging.remove(event.getPlayer().getUniqueId());
         if (battles.containsKey(event.getPlayer().getUniqueId()))
             battles.remove(event.getPlayer().getUniqueId());
-        if (BattleMobs.pets.containsKey(event.getPlayer().getUniqueId()) && Database.enabled) {
-            LivingEntity pet = BattleMobs.pets.get(event.getPlayer().getUniqueId());
+        if (BattlePets.pets.containsKey(event.getPlayer().getUniqueId()) && Database.enabled) {
+            LivingEntity pet = BattlePets.pets.get(event.getPlayer().getUniqueId());
             Database.SavePet(pet);
-            BattleMobs.spawning.returnas(pet);
+            BattlePets.spawning.returnas(pet);
             pet.remove();
-            BattleMobs.pets.remove(event.getPlayer().getUniqueId());
-        } else if (BattleMobs.pets.containsKey(event.getPlayer().getUniqueId()))
-            BattleMobs.return_pet(event.getPlayer());
+            BattlePets.pets.remove(event.getPlayer().getUniqueId());
+        } else if (BattlePets.pets.containsKey(event.getPlayer().getUniqueId()))
+            BattlePets.return_pet(event.getPlayer());
     }
 
     @EventHandler
@@ -212,15 +213,15 @@ public class PlayerEvents implements Listener {
     @EventHandler
     public void onTP(final PlayerTeleportEvent event) {
         if (event.getCause() == TeleportCause.UNKNOWN) return;
-        if (BattleMobs.pets.containsKey(event.getPlayer().getUniqueId())) {
-            LivingEntity pet = BattleMobs.pets.get(event.getPlayer().getUniqueId());
+        if (BattlePets.pets.containsKey(event.getPlayer().getUniqueId())) {
+            LivingEntity pet = BattlePets.pets.get(event.getPlayer().getUniqueId());
             if (Database.enabled) {
                 Database.SavePet(pet);
-                BattleMobs.spawning.returnas(pet);
+                BattlePets.spawning.returnas(pet);
                 pet.remove();
-                BattleMobs.pets.remove(event.getPlayer().getUniqueId());
+                BattlePets.pets.remove(event.getPlayer().getUniqueId());
             } else
-                BattleMobs.return_pet(event.getPlayer());
+                BattlePets.return_pet(event.getPlayer());
         }
         if (Database.enabled) {
             Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
@@ -234,12 +235,12 @@ public class PlayerEvents implements Listener {
 
     @EventHandler
     public void onChange(final PlayerChangedWorldEvent event) {
-        if (BattleMobs.pets.containsKey(event.getPlayer().getUniqueId()) && Database.enabled) {
-            LivingEntity pet = BattleMobs.pets.get(event.getPlayer().getUniqueId());
+        if (BattlePets.pets.containsKey(event.getPlayer().getUniqueId()) && Database.enabled) {
+            LivingEntity pet = BattlePets.pets.get(event.getPlayer().getUniqueId());
             Database.SavePet(pet);
-            BattleMobs.spawning.returnas(pet);
+            BattlePets.spawning.returnas(pet);
             pet.remove();
-            BattleMobs.pets.remove(event.getPlayer().getUniqueId());
+            BattlePets.pets.remove(event.getPlayer().getUniqueId());
             Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 
                 @Override
@@ -247,20 +248,20 @@ public class PlayerEvents implements Listener {
                     Database.LoadPet(event.getPlayer());
                 }
             }, 5L);
-        } else if (BattleMobs.pets.containsKey(event.getPlayer().getUniqueId()))
-            BattleMobs.return_pet(event.getPlayer());
+        } else if (BattlePets.pets.containsKey(event.getPlayer().getUniqueId()))
+            BattlePets.return_pet(event.getPlayer());
     }
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
-        if (BattleMobs.pets.containsKey(event.getEntity().getUniqueId()) && Database.enabled) {
-            LivingEntity pet = BattleMobs.pets.get(event.getEntity().getUniqueId());
+        if (BattlePets.pets.containsKey(event.getEntity().getUniqueId()) && Database.enabled) {
+            LivingEntity pet = BattlePets.pets.get(event.getEntity().getUniqueId());
             Database.SavePet(pet);
-            BattleMobs.spawning.returnas(pet);
+            BattlePets.spawning.returnas(pet);
             pet.remove();
-            BattleMobs.pets.remove(event.getEntity().getUniqueId());
-        } else if (BattleMobs.pets.containsKey(event.getEntity().getUniqueId())) {
-            ItemStack ite = BattleMobs.return_pet(event.getEntity());
+            BattlePets.pets.remove(event.getEntity().getUniqueId());
+        } else if (BattlePets.pets.containsKey(event.getEntity().getUniqueId())) {
+            ItemStack ite = BattlePets.return_pet(event.getEntity());
             event.getDrops().add(ite);
         }
     }
@@ -288,7 +289,7 @@ public class PlayerEvents implements Listener {
                 p = (Player) ((Projectile) event.getDamager()).getShooter();
         }
         if (p == null) return;
-        if (BattleMobs.PVP) return;
+        if (BattlePets.PVP) return;
         event.setCancelled(true);
 
     }
@@ -296,13 +297,13 @@ public class PlayerEvents implements Listener {
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
         if (namechanging.contains(event.getPlayer().getUniqueId())) {
-            if (BattleMobs.pets.containsKey(event.getPlayer().getUniqueId())) {
-                LivingEntity pet = BattleMobs.pets.get(event.getPlayer().getUniqueId());
-                if (event.getMessage().length() > BattleMobs.namesize) {
+            if (BattlePets.pets.containsKey(event.getPlayer().getUniqueId())) {
+                LivingEntity pet = BattlePets.pets.get(event.getPlayer().getUniqueId());
+                if (event.getMessage().length() > BattlePets.namesize) {
                     event.getPlayer().sendMessage(Language.getMessage("pet_name_toolong"));
                     return;
                 }
-                pet.setMetadata("Name", new FixedMetadataValue(BattleMobs.plugin, event.getMessage()));
+                pet.setMetadata("Name", new FixedMetadataValue(BattlePets.plugin, event.getMessage()));
                 event.getPlayer().sendMessage(Language.getMessage("pet_renamed"));
                 pet.setCustomName(ChatColor.translateAlternateColorCodes('&', Language.display.replace("{name}", pet.getMetadata("Name").get(0).asString()).replace("{level}", pet.getMetadata("Level").get(0).asString() + "")));
             } else {
@@ -318,7 +319,7 @@ public class PlayerEvents implements Listener {
     public void onCommand(PlayerCommandPreprocessEvent event) {
         String cmd = event.getMessage().split(" ")[0];
         cmd = cmd.substring(1);
-        if (BattleMobs.aliases.contains(cmd)) {
+        if (BattlePets.aliases.contains(cmd)) {
             event.setMessage(event.getMessage().replaceFirst(cmd, "battlepets"));
         }
     }
@@ -327,7 +328,7 @@ public class PlayerEvents implements Listener {
     public void onServerCommand(ServerCommandEvent event) {
 
         String cmd = event.getCommand().split(" ")[0];
-        if (BattleMobs.aliases.contains(cmd)) {
+        if (BattlePets.aliases.contains(cmd)) {
             event.setCommand(event.getCommand().replaceFirst(cmd, "battlepets"));
         }
     }
@@ -336,7 +337,7 @@ public class PlayerEvents implements Listener {
     public void onAnvil(InventoryClickEvent event) {
         if (event.getInventory() instanceof AnvilInventory) {
             if (event.getSlotType() != SlotType.RESULT) return;
-            if (BattleMobs.version.equals("v1_9_R1")) {
+            if (BattlePets.version.equals("v1_9_R1")) {
                 if (!util1_9.fromItemStack(event.getCurrentItem()))
                     event.setCancelled(true);
             } else if (event.getCurrentItem().getType() == Material.MONSTER_EGG && event.getCurrentItem().getDurability() == 0) {
