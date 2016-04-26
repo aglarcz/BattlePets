@@ -221,7 +221,7 @@ public class Shop implements Listener {
                 if (jobargs.length > 3)
                     jobargs[2] += ":" + jobargs[3];
                 String type = jobargs[2].split("-")[jobargs[2].split("-").length - 1].toLowerCase();
-                if (!type.equalsIgnoreCase("block")) {
+                if (!type.equalsIgnoreCase("block") && !type.equalsIgnoreCase("baby-wither")) {
                 ItemStack ite = BattlePets.createEgg(type, jobargs[2].split("-"));
                 ItemMeta meta = ite.getItemMeta();
                 meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', jobargs[1]));

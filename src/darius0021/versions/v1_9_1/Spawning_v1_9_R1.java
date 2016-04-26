@@ -7,7 +7,6 @@ import darius0021.versions.Spawning;
 import darius0021.versions.Util;
 import net.minecraft.server.v1_9_R1.*;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
@@ -22,7 +21,7 @@ import org.bukkit.entity.Horse.Variant;
 import org.bukkit.entity.Rabbit.Type;
 import org.bukkit.entity.Skeleton.SkeletonType;
 import org.bukkit.entity.Villager.Profession;
-import org.bukkit.event.entity.EntityTargetEvent.TargetReason;
+import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -240,7 +239,7 @@ public class Spawning_v1_9_R1 implements Spawning {
             pet2.setGoalTarget(null);
             return;
         }
-        pet2.setGoalTarget(((CraftLivingEntity) target).getHandle(), TargetReason.CUSTOM, true);
+        pet2.setGoalTarget(((CraftLivingEntity) target).getHandle(), EntityTargetEvent.TargetReason.CUSTOM, true);
     }
 
     @Override

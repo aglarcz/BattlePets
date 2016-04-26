@@ -336,7 +336,7 @@ public class BattlePets extends JavaPlugin implements Listener {
         }
         p.openInventory(inv);
     }
-
+    public static int tries=0;
     public static ItemStack createEgg(String type, String args[]) {
     	try {
     	type=type.toUpperCase();
@@ -345,14 +345,14 @@ public class BattlePets extends JavaPlugin implements Listener {
         if (type.equalsIgnoreCase("random")) {
             type = (String) statsai.keySet().toArray()[rand.nextInt(statsai.size())];
             type = type.toUpperCase();
-            if (type.contains("BABY")) {
-            	type=type.replace("BABY-", "");
-            }
             full=true;
             args = new String[10];
             for (int i=0; i<10; i++) {
             	args[i]="";
             }
+        }
+        if (type.contains("BABY")) {
+        	type=type.replace("BABY-", "");
         }
         Entity entity = Bukkit.getWorlds().get(0).spawnEntity(
         		new Location(Bukkit.getWorlds().get(0), 0, 0, 0),
@@ -520,9 +520,17 @@ public class BattlePets extends JavaPlugin implements Listener {
         meta.setDisplayName(Language.defaultas.replace("{type}", full_type));
         meta.setLore(Arrays.asList(Language.getMessage("type", true) + ": " + full_type, Language.getMessage("level", true) + ": 1", Language.getMessage("xp", true) + ": 0/" + statsai.XPForLevel, Language.getMessage("hp", true) + ": " + statsai.HP + "/" + statsai.HP, Language.getMessage("skillpoints", true) + ": " + statsai.SkillpointsForLevel, Language.getMessage("vitality", true) + ": 0", Language.getMessage("defense", true) + ": 0", Language.getMessage("strength", true) + ": 0", Language.getMessage("dexterity", true) + ": 0"));
         item.setItemMeta(meta);
+        tries=0;
         return item;
     	} catch (Exception e) {
-    		return BattlePets.createEgg(type, args);
+    		if (tries<5) {
+    			tries++;
+    			return BattlePets.createEgg(type, args);
+    		} else {
+    		tries=0;
+    		e.printStackTrace();
+    		}
+    		return null;
     	}
         
     }

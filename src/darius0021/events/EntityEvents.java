@@ -26,7 +26,6 @@ public class EntityEvents implements Listener {
         this.plugin = plugin;
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
-
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onDMGpet(EntityDamageByEntityEvent event) {
         if (!event.getDamager().hasMetadata("Owner")) return;

@@ -308,7 +308,7 @@ public class Commands {
             if (type.equalsIgnoreCase("endermite"))
                 type = "block";
             MobStats stats = BattlePets.statsai.get(type);
-            if (type.equalsIgnoreCase("block")) {
+            if (type.equalsIgnoreCase("block") || type.equalsIgnoreCase("baby-wither")) {
             ItemStack item = new ItemStack(Material.MONSTER_EGG, 1);
             ItemMeta meta = item.getItemMeta();
             if (args.length > 3) {
