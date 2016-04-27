@@ -1,6 +1,6 @@
 main: darius0021.BattlePets
 name: BattlePets
-version: 1.9.2
+version: 1.9.4
 author: Darius0021
 description: BattlePets
 depend: [Vault]

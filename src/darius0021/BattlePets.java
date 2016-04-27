@@ -89,6 +89,7 @@ public class BattlePets extends JavaPlugin implements Listener {
             PlayerEvents.battles.remove(p.getUniqueId());
 
         LivingEntity pet = pets.get(p.getUniqueId());
+        if (pet==null) return null;
         spawning.returnPet(pet);
         ItemStack ite = new ItemStack(Material.MONSTER_EGG, 1);
         ItemMeta meta = ite.getItemMeta();

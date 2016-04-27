@@ -1,10 +1,16 @@
 package darius0021.versions.v1_9_1;
 
+import java.util.UUID;
+
+import org.bukkit.Bukkit;
+import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
+
 import net.minecraft.server.v1_9_R1.*;
 
 public class PathFinderTargetAttack extends PathfinderGoal {
 
     protected EntityInsentient b;
+    protected EntityHuman owner;
     World a;
     int c;
     double d;
@@ -21,6 +27,7 @@ public class PathFinderTargetAttack extends PathfinderGoal {
         this.a = paramEntityCreature.world;
         this.d = paramDouble;
         this.e = paramBoolean;
+        owner = ((CraftPlayer)Bukkit.getPlayer(UUID.fromString(b.getBukkitEntity().getMetadata("Owner").get(0).asString()))).getHandle();
         a(3);
 
     }
@@ -56,11 +63,8 @@ public class PathFinderTargetAttack extends PathfinderGoal {
             if (this.b.getEquipment(EnumItemSlot.MAINHAND) != null) {
                 this.b.a(EnumHand.MAIN_HAND);
             }
-            //TODO: Try this fix
-            if (this.b instanceof WitherPet && this.b.getGoalTarget() instanceof WitherPet) {
-            	this.b.getGoalTarget().l(5000);
-            	this.b.getGoalTarget().damageEntity(DamageSource.mobAttack(b), (float) b.getAttributeInstance(GenericAttributes.ATTACK_DAMAGE).getValue());
-            	this.b.getGoalTarget().l(600);
+            if (this.b.getGoalTarget() instanceof WitherPet) {
+            	this.b.getGoalTarget().damageEntity(DamageSource.OUT_OF_WORLD, (float) b.getAttributeInstance(GenericAttributes.ATTACK_DAMAGE).getValue()/1.4f);
             } else
             this.b.getGoalTarget().damageEntity(DamageSource.mobAttack(b), (float) b.getAttributeInstance(GenericAttributes.ATTACK_DAMAGE).getValue());
         }
@@ -81,4 +85,5 @@ public class PathFinderTargetAttack extends PathfinderGoal {
     protected double a(EntityLiving paramEntityLiving) {
         return this.b.width * 2.0F * (this.b.width * 2.0F) + paramEntityLiving.width;
     }
+    
 }
