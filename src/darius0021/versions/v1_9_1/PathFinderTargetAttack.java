@@ -1,7 +1,5 @@
 package darius0021.versions.v1_9_1;
 
-import org.bukkit.Bukkit;
-
 import net.minecraft.server.v1_9_R1.*;
 
 public class PathFinderTargetAttack extends PathfinderGoal {
@@ -58,6 +56,12 @@ public class PathFinderTargetAttack extends PathfinderGoal {
             if (this.b.getEquipment(EnumItemSlot.MAINHAND) != null) {
                 this.b.a(EnumHand.MAIN_HAND);
             }
+            //TODO: Try this fix
+            if (this.b instanceof WitherPet && this.b.getGoalTarget() instanceof WitherPet) {
+            	this.b.getGoalTarget().l(5000);
+            	this.b.getGoalTarget().damageEntity(DamageSource.mobAttack(b), (float) b.getAttributeInstance(GenericAttributes.ATTACK_DAMAGE).getValue());
+            	this.b.getGoalTarget().l(600);
+            } else
             this.b.getGoalTarget().damageEntity(DamageSource.mobAttack(b), (float) b.getAttributeInstance(GenericAttributes.ATTACK_DAMAGE).getValue());
         }
         b.a(localEntityLiving, 30F, 30F);

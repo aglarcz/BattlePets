@@ -160,7 +160,7 @@ public class PlayerEvents implements Listener {
         if (event.getItem() == null) return;
         ItemStack item = event.getItem();
         if (item.getType() != Material.MONSTER_EGG) return;
-        if (!event.getPlayer().getInventory().getItemInMainHand().equals(item)) return;
+        if (!event.getPlayer().getInventory().getItemInHand().equals(item)) return;
         if (!item.hasItemMeta()) return;
         if (!item.getItemMeta().hasLore()) return;
         if (item.getItemMeta().getLore().size() < 6) return;

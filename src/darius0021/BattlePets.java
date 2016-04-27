@@ -80,6 +80,7 @@ public class BattlePets extends JavaPlugin implements Listener {
     EntityEvents entityevents;
     InventoryEvents inventoryevents;
     PlayerEvents playerevents;
+    ArmorStandEvent armorevents;
 
     public static ItemStack return_pet(Player p) {
         if (PlayerEvents.namechanging.contains(p.getUniqueId()))
@@ -488,18 +489,22 @@ public class BattlePets extends JavaPlugin implements Listener {
         	if (en.isBaby()) {
         		if (args[1].equalsIgnoreCase("random") || full) {
                 	if (rand.nextInt(2)==0) {
-                		en.setVillagerProfession(Profession.BLACKSMITH);
+                		en.setVillager(true);
+                		//en.setVillagerProfession(Profession.BLACKSMITH);
                 	}
         		} else if (args[1].equalsIgnoreCase("villager")) {
-        			en.setVillagerProfession(Profession.BLACKSMITH);
+        			en.setVillager(true);
+        			//en.setVillagerProfession(Profession.BLACKSMITH);
             	}
         	} else {
         		if (args[0].equalsIgnoreCase("random") || full) {
                 	if (rand.nextInt(2)==0) {
-                		en.setVillagerProfession(Profession.BLACKSMITH);
+                		en.setVillager(true);
+                		//en.setVillagerProfession(Profession.BLACKSMITH);
                 	}
         		} else if (args[0].equalsIgnoreCase("villager")) {
-        			en.setVillagerProfession(Profession.BLACKSMITH);
+        			en.setVillager(true);
+        			//en.setVillagerProfession(Profession.BLACKSMITH);
             	}
         	}
             full_type += ((Zombie) entity).isBaby() ? "Baby-" : "";
@@ -552,7 +557,7 @@ public class BattlePets extends JavaPlugin implements Listener {
         entityevents = new EntityEvents(this);
         inventoryevents = new InventoryEvents(this);
         playerevents = new PlayerEvents(this);
-        ArmorStandEvent event = new ArmorStandEvent(this);
+        armorevents = new ArmorStandEvent(this);
         catcher = new MobCatching(this);
         shop = new Shop(this);
         lang = new Language(this);

@@ -123,10 +123,10 @@ public class Spawning_v1_9_R1 implements Spawning {
             } else if (entity instanceof Skeleton) {
                 if (type[0].equalsIgnoreCase("wither")) {
                     ((Skeleton) entity).setSkeletonType(SkeletonType.WITHER);
-                    ((Skeleton) entity).getEquipment().setItemInMainHand(new ItemStack(Material.STONE_SWORD));
+                    ((Skeleton) entity).getEquipment().setItemInHand(new ItemStack(Material.STONE_SWORD));
                 } else {
                     ((Skeleton) entity).setSkeletonType(SkeletonType.NORMAL);
-                    ((Skeleton) entity).getEquipment().setItemInMainHand(new ItemStack(Material.BOW));
+                    ((Skeleton) entity).getEquipment().setItemInHand(new ItemStack(Material.BOW));
                 }
             } else if (entity instanceof Villager) {
                 if (type[0].equalsIgnoreCase("baby")) {
@@ -141,12 +141,12 @@ public class Spawning_v1_9_R1 implements Spawning {
                     ((Zombie) entity).setBaby(false);
                 if (type.length > 1)
                     if (type[0].equalsIgnoreCase("villager") || type[1].equalsIgnoreCase("villager")) {
-                        ((Zombie) entity).setVillagerProfession(Profession.BLACKSMITH);
+                        ((Zombie) entity).setVillager(true);
                     } else {
-                        ((Zombie) entity).setVillagerProfession(null);
+                        ((Zombie) entity).setVillager(false);
                     }
             } else if (entity instanceof PigZombie) {
-                ((PigZombie) entity).getEquipment().setItemInMainHand(new ItemStack(Material.GOLD_SWORD));
+                ((PigZombie) entity).getEquipment().setItemInHand(new ItemStack(Material.GOLD_SWORD));
             } else if (entity instanceof Slime) {
                 ((Slime) entity).setSize(Integer.parseInt(type[0]));
             }

@@ -191,7 +191,7 @@ public class Shop implements Listener {
         LivingEntity pet = BattlePets.pets.get(p.getUniqueId());
         switch (partjob) {
             case "revive":
-                ItemStack item2 = p.getInventory().getItemInMainHand();
+                ItemStack item2 = p.getInventory().getItemInHand();
                 ItemMeta meta1 = item2.getItemMeta();
                 List<String> lore = meta1.getLore();
                 double hp = Double.valueOf(lore.get(3).substring(lore.get(3).indexOf("/") + 1));
