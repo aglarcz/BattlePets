@@ -1,18 +1,18 @@
-package darius0021.versions.v1_9_1;
+package darius0021.versions.v1_9_2;
 
 import darius0021.BattlePets;
 import darius0021.Language;
 import darius0021.MobStats;
 import darius0021.versions.Spawning;
 import darius0021.versions.Util;
-import net.minecraft.server.v1_9_R1.*;
+import net.minecraft.server.v1_9_R2.*;
 
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_9_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_9_R1.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_9_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftLivingEntity;
+import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
 import org.bukkit.entity.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Horse.Color;
@@ -30,7 +30,7 @@ import org.bukkit.metadata.FixedMetadataValue;
 import java.util.List;
 import java.util.Set;
 
-public class Spawning_v1_9_R1 implements Spawning {
+public class Spawning_v1_9_R2 implements Spawning {
 
     @Override
     @SuppressWarnings("rawtypes")

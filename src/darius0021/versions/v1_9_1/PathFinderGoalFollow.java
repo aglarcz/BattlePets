@@ -115,7 +115,6 @@ public class PathFinderGoalFollow extends PathfinderGoal {
     }
 
     public void g(float f, float f1) {
-        Bukkit.broadcastMessage("riding");
         if ((creature.co()) || (creature.bx())) {
             if ((creature.isInWater())) {
                 double d1 = creature.locY;

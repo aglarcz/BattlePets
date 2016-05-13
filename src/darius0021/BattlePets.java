@@ -58,6 +58,7 @@ import darius0021.versions.v1_8_1.Spawning_v1_8_R1;
 import darius0021.versions.v1_8_2.Spawning_v1_8_R2;
 import darius0021.versions.v1_8_3.Spawning_v1_8_R3;
 import darius0021.versions.v1_9_1.Spawning_v1_9_R1;
+import darius0021.versions.v1_9_2.Spawning_v1_9_R2;
 
 public class BattlePets extends JavaPlugin implements Listener {
     public static HashMap<String, MobStats> statsai = new HashMap<String, MobStats>();
@@ -760,6 +761,9 @@ public class BattlePets extends JavaPlugin implements Listener {
                 break;
             case "v1_9_R1":
                 spawning = new Spawning_v1_9_R1();
+                break;
+            case "v1_9_R2":
+            	spawning = new Spawning_v1_9_R2();
         }
 
         return spawning != null;
