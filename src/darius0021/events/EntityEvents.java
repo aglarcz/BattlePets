@@ -174,7 +174,9 @@ public class EntityEvents implements Listener {
     public void onUnload(ChunkUnloadEvent event) {
     	for (Entity entity : event.getChunk().getEntities()) {
     		if (entity.hasMetadata("Owner")) {
-    			BattlePets.return_pet(Bukkit.getPlayer(UUID.fromString(entity.getMetadata("Owner").get(0).asString())));
+    			event.setCancelled(true);
+    			break;
+    			//BattlePets.return_pet(Bukkit.getPlayer(UUID.fromString(entity.getMetadata("Owner").get(0).asString())));
     		}
     	}
     }

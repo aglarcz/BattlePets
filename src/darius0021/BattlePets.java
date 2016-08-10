@@ -54,6 +54,7 @@ import darius0021.events.EntityEvents;
 import darius0021.events.InventoryEvents;
 import darius0021.events.PlayerEvents;
 import darius0021.versions.Spawning;
+import darius0021.versions.v1_10_1.Spawning_v1_10_R1;
 import darius0021.versions.v1_8_1.Spawning_v1_8_R1;
 import darius0021.versions.v1_8_2.Spawning_v1_8_R2;
 import darius0021.versions.v1_8_3.Spawning_v1_8_R3;
@@ -764,6 +765,9 @@ public class BattlePets extends JavaPlugin implements Listener {
                 break;
             case "v1_9_R2":
             	spawning = new Spawning_v1_9_R2();
+            	break;
+            case "v1_10_R1":
+            	spawning = new Spawning_v1_10_R1();
         }
 
         return spawning != null;
